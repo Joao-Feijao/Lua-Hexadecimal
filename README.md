@@ -21,7 +21,7 @@ Hi, I made a module in Lua that can manipulate hexadecimal!
    ```lua
    local Hexadec = require("hexadec")
    local hexa = Hexadec.NCode(16, nil, nil, "255", "255") -- Will be extremely optimized
-   print(meu_hex) -- {255, 255}
+   print(hexa) -- {255, 255}
    ```
   ````
 
