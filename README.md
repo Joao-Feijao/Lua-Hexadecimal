@@ -12,8 +12,8 @@ Hi, I made a module in Lua that can manipulate hexadecimal!
   *- Variadic (...)*: Numeric strings that will be converted.
   
   Example:<br>
-    ```lua<br>
-    local meu_hex = Hexadec.NCode(10, nil, nil, "255", "255")<br>
+    ```lua
+    local meu_hex = Hexadec.NCode(10, nil, nil, "255", "255")
     print(meu_hex) -- "FFFF"
     ```
     
