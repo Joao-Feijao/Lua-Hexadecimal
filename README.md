@@ -1,9 +1,16 @@
 # Hexadec-LuaRocks-Module
 Hi, I made a module in Lua that can manipulate hexadecimal!
-It can convert numbers of n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
-back or become RGB (RGBA) colors, dump and be cleaned, with a secure mode for the decode function.
+It can convert numbers of a n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
+back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode for the decode function.
 Also, I recommend using 'Color' and 'Hex' with it!
-# Documentation:
+
+# Starting
+You can download via LuaRocks with the repository website (https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:
+````markdown
+  $ luarocks install hexadec
+````
+
+# General documentation
 **FUNCTION: Hexadec.NCode:**
   Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep.
   
