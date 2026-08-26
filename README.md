@@ -1,4 +1,4 @@
-# Introduction for Hexadec-LuaRocks-Module
+# Introduction for Lua-Hexadecimal
 Hi, I made a module in Lua that can manipulate hexadecimal!
 It can convert numbers of a n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
 back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode for the decode function.
