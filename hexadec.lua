@@ -16,6 +16,7 @@ return function(...)
 
     local counter = 0
     local tcount = args[1]
+    local bytelen = args[1]
     local bitwis
     if v == "LuaJIT" then
         -- No LuaJIT, dividimos por 2^b usando matemática pura
@@ -30,16 +31,15 @@ return function(...)
         bitwis(tcount, 1)
         counter = counter + 1
     until tcount > 1
-    -- Se 'utf8' não existir (caso do LuaJIT/5.1), criamos um substituto compatível
     local utf8_codes = (utf8 and utf8.codes) or function(str)
         local i = 1
         local len = #str
         return function()
             if i > len then return nil end
+
             local strbyte = string.byte
             local byte = strbyte(str, i)
             
-            -- Lógica de decodificação UTF-8 manual rápida (Pula os bytes extras dos caracteres acentuados)
             local code = byte
             local step = 1
             if byte >= 0xC0 and byte <= 0xDF then
@@ -70,10 +70,31 @@ return function(...)
         Hexadec.HEX[i] = format("%02X", i)
     end
 
+    Hexadec.BitMetatable = {__type = "nibbles", __index = Hexadec, __tostring = function(self)
+        local concat <const> = table.concat
+
+        return "{"..concat(self, ", ").."}"
+    end, __concat = function(a, b)
+        local tostring <const> = tostring
+
+        return tostring(a)..tostring(b)
+    end, __eq = function(a, b)
+        local tostring = tostring
+
+        if tostring(a) == tostring(b) then
+            return true
+        else
+            return false
+        end
+    end, __len = function(self)
+        local rawlen = rawlen
+
+        return rawlen(self) * 4
+    end}
     Hexadec.Metatable = {__type = "hexadec", __index = Hexadec, __tostring = function(self)
         local concat = table.concat
 
-        return concat(self)
+        return "{"..concat(self, ", ").."}"
     end, __concat = function(a, b)
         local tostring = tostring
 
@@ -95,12 +116,11 @@ return function(...)
         sep = sep or ""
 
         local create = table_create
-        local insert = table.insert
         local format = string.format
         local codes = utf8_codes
         local setmetatable = setmetatable
         local tonumber = tonumber
-        local args = args
+        local bytelen = bytelen
 
         local hex = create(#vars, 0)
         local fmt
@@ -110,12 +130,13 @@ return function(...)
             fmt = "%X"
         end
 
+        local error = error
         if base > 36 then
-            local error = error
-
             error("This function can't use bases bigger than 36")
+        elseif base < 2 then
+            error("This function can't use bases lower than 2")
         elseif base == 16 then
-            if #args == 1 then
+            if #vars == 1 then
                 hex[1] = vars[1]
             else
                 for i = 1, #vars do
@@ -130,11 +151,12 @@ return function(...)
         local sub = string.sub
         local byte = string.byte
         local lower = string.lower
-
+        
+        local cond = min and (min ~= 0 and sep ~= "")
         if #vars == 1 then
             local x = tonumber(vars[1], base)
 
-            if (min and (min ~= 0 and sep ~= "")) or x > args[1] - 1 then
+            if cond then
                 hex[1] = format(fmt, x)
             else
                 hex[1] = h[x]
@@ -142,13 +164,15 @@ return function(...)
         else
             local n = 0
 
-            for i = 1, #vars do
-                local x = tonumber(vars[i], base)
-
-                if (min and (min ~= 0 and sep ~= "")) or x > args[1] - 1 then
+            if cond then
+                for i = 1, #vars do
+                    local x = tonumber(vars[i], base)
                     n = n + 1
                     hex[n] = format(fmt, x)
-                else
+                end
+            else
+                for i = 1, #vars do
+                    local x = tonumber(vars[i], base)
                     n = n + 1
                     hex[n] = h[x]
                 end
@@ -182,22 +206,24 @@ return function(...)
                 hex[n] = format(fmt, code)
             end
         else
+            local fmt = "%X"
             local h = Hexadec.HEX
             for _, code in codes(str) do
                 n = n + 1
-                hex[n] = h[code]
+                hex[n] = h[code] or format(fmt, code)
             end
         end
 
         return setmetatable(hex, Hexadec.Metatable)
     end
-    function Hexadec:NDecode(secure)
+    function Hexadec:NDecode(str, secure)
         local error = error
         local getmetatable = getmetatable
         local type = type
         local format = string.format
         local tonumber = tonumber
-        local tself = type(self) 
+        local tself = type(self)
+        local char = string.char
 
         if tself == "number" then
             return self
@@ -219,8 +245,14 @@ return function(...)
         end
 
         local nums = {}
-        for i = 1, #self do
-            nums[i] = tonumber(self[i], 16)
+        if str then
+            for i = 1, #self do
+                nums[i] = char(tonumber(self[i], 16))
+            end
+        else
+            for i = 1, #self do
+                nums[i] = tonumber(self[i], 16)
+            end
         end
 
         return nums
@@ -247,7 +279,7 @@ return function(...)
 
         if secure then
             if not self:IsHex(true) then 
-                error("Not a valid hexadecimal (don't includes spaces)") 
+                return "Not a valid hexadecimal (don't includes spaces)"
             end
         end
 
@@ -296,6 +328,7 @@ return function(...)
         local t = (getmetatable(self) or tab).__type
         if t ~= "hexadec" then
             local error = error
+
             error("Expected 'hexadec' and received '"..t.."'")
         end
 
@@ -389,26 +422,6 @@ return function(...)
                     write(self[i].." | ")
                 end
             end
-
-            --[=[local tam = 0
-            local i = 1
-            local j = 1
-            repeat
-                io.write(string.format("%07X", i)..": ")
-                repeat
-                    if #x[j] + tam > line then
-                        break
-                    else
-                        tam = tam + #x[j] + 3
-                        io.write(x[j].." | ")
-                    end
-
-                    j = j + 1
-                until not x[j]
-
-                io.write("\n")
-                i = i + 1
-            until not x[j]]=]
         elseif mode == "n" or mode == "-n" then
             inter = (type(inter) == "table" and inter) or {1, 1}
 

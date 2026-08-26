@@ -1,5 +1,5 @@
-package.path = "E:\\Lua Int\\Meus Arquivos Lua\\Projetos Reais\\Hexadec\\?.lua" -- your path here
-local hexadec = require("hexadec")(255) -- Start: The arg is the cache size for bits
+package.path = "your path here"
+local hexadec = require("Projetos Reais.Hexadec.hexadec5.5")(255) -- Start: The arg is the cache size for bits
 
 print (hexadec.NCode())
 local function Set(name, func, reps, ...)
