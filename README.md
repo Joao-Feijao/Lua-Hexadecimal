@@ -29,23 +29,23 @@ Now, the next step is loading the package:
   Description: The setup function mentioned in the Starting section.
 
   Return:<br>
-  *- Hexadec Module or SECRETE MESSAGE*.
+  *- Hexadec Module or SECRET MESSAGE*.
 
   Args:<br>
-  *- 1st argument (or cache)*: Number that defines your Hexadec.HEX cache.
+  *- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
 
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")
    print (Hexadec) -- function: 0x... -- Setup function
-   print (Hexadec()) -- SECRETE MESSAGE -- No arguments
-   print (Hexadec(255)) -- table: 0x... (Hexadec Module) - With cache
+   print (Hexadec()) -- SECRET MESSAGE -- No arguments
+   print (Hexadec(255)) -- table: 0x... (Hexadec Module) - With cache size
   ````
 **FUNCTION: Hexadec.NCode(base: number, min: number, sep: string, ...):**<br>
   Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep.
   
   Return:<br>
-  *- Hexadec type (table)*.
+  *- Hexadec type (table) with string values*.
 
   Args:<br>
   *- Base*: Numeric base of the numeric strings (default is 10; minimum is 2 and maximum is 36);<br>
@@ -65,4 +65,27 @@ Now, the next step is loading the package:
    print(hexa) -- {255, 255}
   ````
 
+**FUNCTION: Hexadec.SCode(str: string, min: number, sep: string):**<br>
+  Description: A function that uses a single string and converts every UTF8 character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep.
+  
+  Return:<br>
+  *- Hexadec type (table) with string values*.
+
+  Args:<br>
+  *- Str*: String;<br>
+  *- Min*: Minimum size of each hexadecimal, filled with 0;<br>
+  *- Sep*: Separates the hexadecimal digits for table.concat on the hexadec type return.
+
+  Tips:<br>
+  *- Every UTF8 character on str will be considered, even blank spaces!*;<br>
+  *- In construction*;<br>
+  *- In construction*;<br>
+  *- In construction*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.SCode("255", nil, nil) -- Will be extremely optimized
+   print(hexa) -- {32, 35, 35}
+  ````
 ### More coming soon...
