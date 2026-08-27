@@ -1,4 +1,4 @@
-# Introduction for Lua-Hexadecimal
+# Introduction for Lua Hexadecimal
 Hi, I made a module in Lua that can manipulate hexadecimal!
 It can convert numbers of a n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
 back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode for the decode function.
@@ -63,7 +63,7 @@ Now, the next step is loading the package:
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.NCode(16, nil, nil, "255") -- Will be extremely optimized
    print(hexa) -- {255, 255}
-  ````
+   ````
 
 **FUNCTION: Hexadec.SCode(str: string, min: number, sep: string):**<br>
   Description: A function that uses a single string and converts every UTF8 and ASCII character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep.
@@ -91,16 +91,19 @@ Now, the next step is loading the package:
   Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.
   
   Return:<br>
+  *Self -> number - Number*;<br>
+  *Self -> string - Number*;<br>
+  *<Self -> hexadec type>*<br>
   *Str ~= true - Table with number values*;<br>
   *Str == true - String*.
 
   Args:<br>
   *- Self*: Can be a hexadec type, a string or a number;<br>
-  *- Str*: Defines if the return is a table or a string;<br>
+  *- Str*: Defines if the return is a table or a string (ONLY AVAILABLE ON v1.1.0+);<br>
   *- Secure*: Uses Hexadec.IsHex before trying the conversion.
 
   Tips:<br>
-  *- Numbers and strings are converted with better performance (prefer use strings than hexadec types with only 1 index)*;<br>
+  *- Numbers and strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
   *- Secure makes the code slightly slower, but may worth it*;<br>
   *- Str makes the code slightly slower, but may worth it*.
   
@@ -108,6 +111,29 @@ Now, the next step is loading the package:
    ````lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.NDecode("FF", false, false) -- Will be optimized
+   print(hexa) -- 255
+   ````
+**FUNCTION: Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
+  Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+  
+  Return:<br>
+  *Self -> string - Number*;<br>
+  *Self -> hexadec type - String*.
+
+  Args:<br>
+  *- Self*: Can be a hexadec type, a string or a number;<br>
+  *- Caps*: Defines if the self uses uppercase or lowercase letters for the conversion;<br>
+  *- Secure*: Uses Hexadec.IsHex before trying the conversion.
+
+  Tips:<br>
+  *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- Caps == true uses uppercase and not Caps uses lowercase*;<br>
+  *- Secure makes the code slightly slower, but may worth it*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.SDecode("FF", false, false) -- Will be optimized
    print(hexa) -- 255
   ````
 ### More coming soon...
