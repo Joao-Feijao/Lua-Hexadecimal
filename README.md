@@ -66,26 +66,48 @@ Now, the next step is loading the package:
   ````
 
 **FUNCTION: Hexadec.SCode(str: string, min: number, sep: string):**<br>
-  Description: A function that uses a single string and converts every UTF8 character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep.
+  Description: A function that uses a single string and converts every UTF8 and ASCII character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep.
   
   Return:<br>
   *- Hexadec type (table) with string values*.
 
   Args:<br>
-  *- Str*: String;<br>
+  *- Str*: Can only be a string;<br>
   *- Min*: Minimum size of each hexadecimal, filled with 0;<br>
   *- Sep*: Separates the hexadecimal digits for table.concat on the hexadec type return.
 
   Tips:<br>
-  *- Every UTF8 character on str will be considered, even blank spaces!*;<br>
-  *- In construction*;<br>
-  *- In construction*;<br>
-  *- In construction*.
+  *- Every UTF8 character on str will be considered, even blank spaces*;<br>
+  *- If the min is nil or min == 0 and sep == "", then it will activate a more efficient string pattern*.
   
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")(255)
-   local hexa = Hexadec.SCode("255", nil, nil) -- Will be extremely optimized
+   local hexa = Hexadec.SCode("255", nil, nil) -- Will be optimized
    print(hexa) -- {32, 35, 35}
+  ````
+
+**FUNCTION: Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
+  Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.
+  
+  Return:<br>
+  *Str ~= true - Table with number values*;<br>
+  *Str == true - String*.
+
+  Args:<br>
+  *- Self*: Can be a hexadec type, a string or a number;<br>
+  *- Str*: Defines if the return is a table or a string;<br>
+  *- Secure*: Uses Hexadec.IsHex before trying the conversion.
+
+  Tips:<br>
+  *- Numbers and strings are converted with better performance (prefer use strings than hexadec types with only 1 index)*;<br>
+  *- Secure makes the code slightly slower, but may worth it*;<br>
+  *- Str makes the code slightly slower, but may worth it*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.NDecode("FF", false, false) -- Will be optimized
+   print(hexa) -- 255
   ````
 ### More coming soon...
