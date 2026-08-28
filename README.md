@@ -47,61 +47,60 @@ Also, I recommend using 'Color' and 'Hex' with it!
     <summary><b>Lua Version: 5.4</b></summary>
     
     <details>
-      <summary><b>Version: 1.0.0</b></summary><br>
+      <summary><b>Version: 1.0.0</b></summary>
       
-    ```lua
-      local hexadec = require("hexadec")
-      local hex = require("hex")
-      
-      Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
-      Set("SCODE", hexadec.SCode, 50000, "121 abc", 2, " ")
-      Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
-      Set("SDECODE", hexadec.SDecode, 50000, "A1", "A1")
-      Set("ISHEX", hexadec.IsHex, 50000, 123, false)
-      Set("CLEAN", hexadec.Clean, 50000, 123, false, true)
-      Set("DUMP", hexadec.Dump, 5, hexadec.NCode(10, nil, nil, "200"), "C")
-      Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
-      Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
-      Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
-      
-      -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
-      NCODE                    : 0.058 secs   6       017 | 001 | 
-      SCODE                    : 0.096 secs   121 abc 31 32 31 20 61 62 63 
-      NDECODE                  : 0.004 secs   161     161
-      SDECODE                  : 0.007 secs   A1      161
-      ISHEX                    : 0.021 secs   123     true
-      CLEAN                    : 0.014 secs   123     7B
-      -- Hexdump
-      DUMP                     : 0.001 secs   C8
-      COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
-      Hex: Encode              : 0.003 secs   121 abc 31323120616263
-      Hex: Decode              : 0.003 secs   31323120616263  121 abc
-    ```
+      ```lua
+        local hexadec = require("hexadec")
+        local hex = require("hex")
+        
+        Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
+        Set("SCODE", hexadec.SCode, 50000, "121 abc", 2, " ")
+        Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
+        Set("SDECODE", hexadec.SDecode, 50000, "A1", "A1")
+        Set("ISHEX", hexadec.IsHex, 50000, 123, false)
+        Set("CLEAN", hexadec.Clean, 50000, 123, false, true)
+        Set("DUMP", hexadec.Dump, 5, hexadec.NCode(10, nil, nil, "200"), "C")
+        Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+        Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
+        Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
+        
+        -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
+        NCODE                    : 0.058 secs   6       017 | 001 | 
+        SCODE                    : 0.096 secs   121 abc 31 32 31 20 61 62 63 
+        NDECODE                  : 0.004 secs   161     161
+        SDECODE                  : 0.007 secs   A1      161
+        ISHEX                    : 0.021 secs   123     true
+        CLEAN                    : 0.014 secs   123     7B
+        -- Hexdump
+        DUMP                     : 0.001 secs   C8
+        COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
+        Hex: Encode              : 0.003 secs   121 abc 31323120616263
+        Hex: Decode              : 0.003 secs   31323120616263  121 abc
+      ```
     </details>
-    
     <details>
       <summary><b>Version: 1.1.0</b></summary>
       
-    ```lua
-      NCODE                    : 0.056 secs   6       {017 | , 001 | }
-      SCODE                    : 0.099 secs   121 abc {31 , 32 , 31 , 20 , 61 , 62 , 63 }
-      NDECODE                  : 0.005 secs   161     161
-      SDECODE                  : 0.007 secs   A1      161
-      ISHEX                    : 0.020 secs   123     true
-      CLEAN                    : 0.015 secs   123     7B
-      0000001: C8 | 
-      0000001: C8 | 
-      0000001: C8 | 
-      0000001: C8 | 
-      0000001: C8 | 
-      0000001: C8 | 
-      DUMP                     : 0.001 secs   {C8}
-      COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
-      Lite: CODE               : 0.043 secs   121 abc table: 0000000000e4ec30
-      Lite: DECODE             : 0.021 secs   A1      table: 0000000000e33810
-      Hex: Encode              : 0.002 secs   121 abc 31323120616263
-      Hex: Decode              : 0.002 secs   31323120616263  121 abc
-    ```
+      ```lua
+        NCODE                    : 0.056 secs   6       {017 | , 001 | }
+        SCODE                    : 0.099 secs   121 abc {31 , 32 , 31 , 20 , 61 , 62 , 63 }
+        NDECODE                  : 0.005 secs   161     161
+        SDECODE                  : 0.007 secs   A1      161
+        ISHEX                    : 0.020 secs   123     true
+        CLEAN                    : 0.015 secs   123     7B
+        0000001: C8 | 
+        0000001: C8 | 
+        0000001: C8 | 
+        0000001: C8 | 
+        0000001: C8 | 
+        0000001: C8 | 
+        DUMP                     : 0.001 secs   {C8}
+        COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
+        Lite: CODE               : 0.043 secs   121 abc table: 0000000000e4ec30
+        Lite: DECODE             : 0.021 secs   A1      table: 0000000000e33810
+        Hex: Encode              : 0.002 secs   121 abc 31323120616263
+        Hex: Decode              : 0.002 secs   31323120616263  121 abc
+      ```
     </details>
   </details>
 </details>
