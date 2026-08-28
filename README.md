@@ -44,8 +44,7 @@ Now, the next step is loading the package:
   end
   ````
   <details>
-    <summary><b>Version: 1.0.0</b></summary>
-  
+    <summary><b>Version: 1.0.0</b></summary><br>
     ````lua
     require("hex")
     require("hexadec")
