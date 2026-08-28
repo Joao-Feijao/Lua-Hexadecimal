@@ -5,7 +5,7 @@ back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode f
 Also, I recommend using 'Color' and 'Hex' with it!
 
 <details>
-<summary>🔍 <b># Starting</b></summary>
+<summary>🔍 <b>Starting</b></summary>
 You can download via LuaRocks through the [repository website](https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:
 ````bash
   $ luarocks install hexadec
@@ -24,7 +24,8 @@ Now, the next step is loading the package:
 ````
 </details>
 
-
+<details>
+<summary>🔍 <b>Documentation</b></summary>
 # Functions documentation
 **FUNCTION: Setup(...):**
   Description: The setup function mentioned in the Starting section.
@@ -247,4 +248,5 @@ Now, the next step is loading the package:
    local hexafloat = Hexadec.Color("FFFFFFFF", true, true, 255) -- Will be optimized
    print(hexafloat) -- 1.0
   ````
+</details>
 ### More coming soon...
