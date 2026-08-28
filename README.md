@@ -12,7 +12,7 @@ You can download via LuaRocks through the [repository website](https://luarocks.
 ````
 
 Now, the next step is loading the package:
-````lua
+```lua
   local hexset = require("hexadec") -- Normal version
   local hexsetlite = require("hexadec_lite") -- Lite version, available on v1.1.0+
 
@@ -21,7 +21,7 @@ Now, the next step is loading the package:
   local hexadec = hexset(10) -- Will return the Hexadec module
   
   print(hexadec.NCode(10, nil, nil, "255")) -- {FF}
-````
+```
 </details>
 
 <details>
@@ -33,7 +33,7 @@ Now, the next step is loading the package:
   - Made on VSCode.
 
   Benckmark function:<br>
-  ````lua
+```lua
     local function Set(name, func, reps, ...)
     local ini= os.clock()
     for _ = 1, reps do
@@ -42,11 +42,11 @@ Now, the next step is loading the package:
     local en = os.clock()
     print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
   end
-  ````
+```
   <details>
     <summary><b>Version: 1.0.0</b></summary><br>
     
-    ````lua
+```lua
     require("hex")
     require("hexadec")
     
@@ -73,12 +73,12 @@ Now, the next step is loading the package:
     COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
     Hex: Encode              : 0.003 secs   121 abc 31323120616263
     Hex: Decode              : 0.003 secs   31323120616263  121 abc
-    ````
+```
   </details>
   <details>
     <summary><b>Version: 1.1.0</b></summary><br>
     
-    ````lua
+```lua
     require("hex")
     require("hexadec")
     
@@ -105,7 +105,7 @@ Now, the next step is loading the package:
     COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
     Hex: Encode              : 0.003 secs   121 abc 31323120616263
     Hex: Decode              : 0.003 secs   31323120616263  121 abc
-    ````
+```
   </details>
 </details>
 
@@ -121,12 +121,12 @@ Now, the next step is loading the package:
   *- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
 
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")
    print (Hexadec) -- function: 0x... -- Setup function
    print (Hexadec()) -- SECRET MESSAGE -- No arguments
    print (Hexadec(255)) -- table: 0x... (Hexadec Module) - With cache size
-  ````
+   ```
 **FUNCTION: Hexadec.NCode(base: number, min: number, sep: string, ...):**<br>
   Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep to create a hexadec type.
   Disclaimer: It can't convert negative numbers, yet.
