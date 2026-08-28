@@ -43,6 +43,7 @@ Now, the next step is loading the package:
   ````
 **FUNCTION: Hexadec.NCode(base: number, min: number, sep: string, ...):**<br>
   Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep to create a hexadec type.
+  Disclaimer: It can't convert negative numbers, yet.
   
   Return:<br>
   *- Hexadec type (table) with string values*.
@@ -67,6 +68,7 @@ Now, the next step is loading the package:
 
 **FUNCTION: Hexadec.SCode(str: string, min: number, sep: string):**<br>
   Description: A function that uses a single string and converts every UTF8 and ASCII character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep to create a hexadec type.
+  Disclaimer: Shouldn't be confused with Hexadec.NCode, even though they almost make the same thing.
   
   Return:<br>
   *- Hexadec type (table) with string values*.
@@ -118,10 +120,10 @@ Now, the next step is loading the package:
   
   Return:<br>
   *Self -> string - Number*;<br>
-  *Self -> hexadec type - String*.
+  *Self -> hexadec type - Table*.
 
   Args:<br>
-  *- Self*: Can be a hexadec type, a string or a number;<br>
+  *- Self*: Can be a hexadec type or a string;<br>
   *- Caps*: Defines if the self uses uppercase or lowercase letters for the conversion;<br>
   *- Secure*: Uses Hexadec.IsHex before trying the conversion.
 
@@ -133,54 +135,57 @@ Now, the next step is loading the package:
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")(255)
-   local hexa = Hexadec.SDecode("FF", false, false) -- Will be optimized
-   print(hexa) -- 255
+   local hexa = Hexadec.SDecode({1, 1, 1}, false, false)
+   print(hexa[1]) -- A
   ````
-###UNDER CONSTRUCTION!!!
 **FUNCTION: Hexadec.IsHex(self: hexadec type | string | number, spaces: boolean):**<br>
-  Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+  Description: A function that checks if self is a valid hexadecimal or not (can ignore spaces).
   
   Return:<br>
-  *Self -> string - Number*;<br>
-  *Self -> hexadec type - String*<br>;
+  *Self -> number - True*;<br>
+  *Self -> string - Boolean*<br>;
   *Self -> hexadec type - Boolean*.
 
   Args:<br>
   *- Self*: Can be a hexadec type, a string or a number;<br>
-  *- Spaces*: Defines if the self uses uppercase or lowercase letters for the conversion.
+  *- Spaces*: Activates a mode that permits spaces in the self argument (ONLY AVAILABLE ON v1.0.0).
 
   Tips:<br>
-  *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-  *- Caps == true uses lowercase and not Caps uses uppercase*;<br>
-  *- Secure makes the code slightly slower, but may worth it*.
+  *- Every number is a hexadecimal, including integers and floats*;<br>
+  *- Spaces makes every %s character be included as valid*.
   
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")(255)
-   local hexa = Hexadec.SDecode("FF", false, false) -- Will be optimized
-   print(hexa) -- 255
+   local hexa = Hexadec.IsHex("FF", false) -- Will be optimized
+   print(hexa) -- true
   ````
-**FUNCTION: Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
-  Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+**FUNCTION: Hexadec.Clean(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
+  Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
   
   Return:<br>
-  *Self -> string - Number*;<br>
-  *Self -> hexadec type - String*.
+  *Self -> string - String*;<br>
+  *Self -> number - String*;<br>
+  *<Self -> hexadec type>*<br>
+  *Str == true - String*;<br>
+  *Str ~= true - Hexadec type*.
 
   Args:<br>
   *- Self*: Can be a hexadec type, a string or a number;<br>
-  *- Caps*: Defines if the self uses uppercase or lowercase letters for the conversion;<br>
-  *- Secure*: Uses Hexadec.IsHex before trying the conversion.
+  *- Spaces*: Defines if the self will keep spaces or not;<br>
+  *- Str*: Concatenates the hexadec type before cleaning.
 
   Tips:<br>
-  *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-  *- Caps == true uses lowercase and not Caps uses uppercase*;<br>
-  *- Secure makes the code slightly slower, but may worth it*.
+  *- Strings and numbers are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- If self -> number, the return will be a hexadecimal string with its value*;<br>
+  *- Spaces == true keeps spaces and not spaces removes them*;<br>
+  *- Str can make the code slightly slower, but may worth it*;<br>
+  *- Str is only used when self -> hexadec type, so you generally can avoid it*.
   
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")(255)
-   local hexa = Hexadec.SDecode("FF", false, false) -- Will be optimized
-   print(hexa) -- 255
+   local hexa = Hexadec.Clean("F F", false)
+   print(hexa) -- FF
   ````
 ### More coming soon...
