@@ -108,22 +108,22 @@ Also, I recommend using 'Color' and 'Hex' with it!
 <details>
   <summary>🔤 <b>Documentation</b></summary>
   
-  **FUNCTION: Setup(...):**
+  **FUNCTION: Setup(...):**<br>
     Description: The setup function mentioned in the Starting section.
   
-    Return:<br>
-    *- Hexadec Module or SECRET MESSAGE*.
+  Return:<br>
+  *- Hexadec Module or SECRET MESSAGE*.
   
-    Args:<br>
-    *- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
+  Args:<br>
+  *- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
   
-    Example:<br>
-     ```lua
-     local Hexadec = require("hexadec")
-     print (Hexadec) -- function: 0x... -- Setup function
-     print (Hexadec()) -- SECRET MESSAGE -- No arguments
-     print (Hexadec(255)) -- table: 0x... (Hexadec Module) - With cache size
-     ```
+  Example:<br>
+    ```lua
+    local Hexadec = require("hexadec")
+    print (Hexadec) -- function: 0x... -- Setup function
+    print (Hexadec()) -- SECRET MESSAGE -- No arguments
+    print (Hexadec(255)) -- table: 0x... (Hexadec Module) - With cache size
+    ```
   **FUNCTION: Hexadec.NCode(base: number, min: number, sep: string, ...):**<br>
     Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep to create a hexadec type.
     Disclaimer: It can't convert negative numbers, yet.
