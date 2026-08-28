@@ -13,7 +13,7 @@ You can download via LuaRocks through the [repository website](https://luarocks.
 Now, the next step is loading the package:
 ````lua
   local hexset = require("hexadec") -- Normal version
-  local hexsetlite = require("hexadec_lite") -- Lite version, available on v1.1.0-1+
+  local hexsetlite = require("hexadec_lite") -- Lite version, available on v1.1.0+
 
   print(type(hexset), type(hexsetlite)) -- function  function -- They both return a setup function
   hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
@@ -89,7 +89,7 @@ Now, the next step is loading the package:
    print(hexa) -- {32, 35, 35}
   ````
 
-**FUNCTION: Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
+**FUNCTION (METHOD): Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
   Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.<br>
   
   Return:<br>
@@ -115,7 +115,7 @@ Now, the next step is loading the package:
    local hexa = Hexadec.NDecode("FF", false, false) -- Will be optimized
    print(hexa) -- 255
    ````
-**FUNCTION: Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
+**FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
   Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
   
   Return:<br>
@@ -138,12 +138,12 @@ Now, the next step is loading the package:
    local hexa = Hexadec.SDecode({1, 1, 1}, false, false)
    print(hexa[1]) -- A
   ````
-**FUNCTION: Hexadec.IsHex(self: hexadec type | string | number, spaces: boolean):**<br>
+**FUNCTION (METHOD): Hexadec.IsHex(self: hexadec type | string | number, spaces: boolean):**<br>
   Description: A function that checks if self is a valid hexadecimal or not (can ignore spaces).
   
   Return:<br>
   *Self -> number - True*;<br>
-  *Self -> string - Boolean*<br>;
+  *Self -> string - Boolean*;<br>
   *Self -> hexadec type - Boolean*.
 
   Args:<br>
@@ -160,13 +160,68 @@ Now, the next step is loading the package:
    local hexa = Hexadec.IsHex("FF", false) -- Will be optimized
    print(hexa) -- true
   ````
-**FUNCTION: Hexadec.Clean(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
+**FUNCTION (METHOD): Hexadec.Clean(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
   Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
   
   Return:<br>
   *Self -> string - String*;<br>
   *Self -> number - String*;<br>
-  *<Self -> hexadec type>*<br>
+  *<Self -> hexadec type:>*<br>
+  *Str == true - String*;<br>
+  *Str ~= true - Hexadec type*.
+
+  Args:<br>
+  *- Self*: Can be a hexadec type, a string or a number;<br>
+  *- Spaces*: Defines if the self will keep spaces or not;<br>
+  *- Str*: Concatenates the hexadec type before cleaning.
+
+  Tips:<br>
+  *- Strings and numbers are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- If self -> number, the return will be a hexadecimal string with its value*;<br>
+  *- Spaces == true keeps spaces and not spaces removes them*;<br>
+  *- Str can make the code slightly slower, but may worth it*;<br>
+  *- Str is only used when self -> hexadec type, so you generally can avoid it*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.Clean("F F", false)
+   print(hexa) -- FF
+  ````
+**FUNCTION (METHOD): Hexadec.Dump(self: hexadec type, mode: string, inter: table | number, line: number):**<br>
+  Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
+  
+  Return: *nil*
+
+  Args:<br>
+  *- Self*: Must be a hexadec type;<br>
+  *- Mode*: Defines the hexdump mode:<br>
+    *> "C" or "-C" don't require inter because hexdumps everything*;<br>
+    *> "n" or "-n" require inter -> table ({start, end})*;<br>
+    *> "s" or "-s" require inter -> number (ignore from start)*;<br>
+  *- Inter*: Defines the interval of the hexdump;<br>
+  *- Line:* Defines the max characteres output for every line in the hexdump.
+
+  Tips:<br>
+  *- Strings and numbers are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- If self -> number, the return will be a hexadecimal string with its value*;<br>
+  *- Spaces == true keeps spaces and not spaces removes them*;<br>
+  *- Str can make the code slightly slower, but may worth it*;<br>
+  *- Str is only used when self -> hexadec type, so you generally can avoid it*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.Clean("F F", false)
+   print(hexa) -- FF
+  ````
+**FUNCTION (METHOD): Hexadec.Color(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
+  Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
+  
+  Return:<br>
+  *Self -> string - String*;<br>
+  *Self -> number - String*;<br>
+  *<Self -> hexadec type:>*<br>
   *Str == true - String*;<br>
   *Str ~= true - Hexadec type*.
 
