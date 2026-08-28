@@ -161,7 +161,7 @@ Now, the next step is loading the package:
    print(hexa) -- true
   ````
 **FUNCTION (METHOD): Hexadec.Clean(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
-  Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
+  Description: A function that cleans self, removing every non-hexadecimal character, with a option to keep spaces or not.
   
   Return:<br>
   *Self -> string - String*;<br>
@@ -189,7 +189,7 @@ Now, the next step is loading the package:
    print(hexa) -- FF
   ````
 **FUNCTION (METHOD): Hexadec.Dump(self: hexadec type, mode: string, inter: table | number, line: number):**<br>
-  Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
+  Description: A function that generates a hexdump in the terminal.
   
   Return: *nil*
 
@@ -215,23 +215,23 @@ Now, the next step is loading the package:
    00000001: FF |  -- Output
    print(hexa) -- nil
   ````
-**FUNCTION (METHOD): Hexadec.Color(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
-  Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
+**FUNCTION (METHOD): Hexadec.Color(self: hexadec type | string, alpha: boolean, float: boolean, bits: number):**<br>
+  Description: A function that creates a RGB or RGBA using a hexadec type or a string.
   
   Return:<br>
-  *Self -> string - String*;<br>
-  *Self -> number - String*;<br>
-  *<Self -> hexadec type:>*<br>
-  *Str == true - String*;<br>
-  *Str ~= true - Hexadec type*.
+  *Self -> hexadec type - String*;<br>
+  *<Self -> string:>*<br>
+  *Float == true - float, float, float, floatr*;<br>
+  *Float ~= true - number, number, number, number*.
 
   Args:<br>
-  *- Self*: Can be a hexadec type, a string or a number;<br>
-  *- Spaces*: Defines if the self will keep spaces or not;<br>
-  *- Str*: Concatenates the hexadec type before cleaning.
+  *- Self*: Can be a hexadec type or a string;<br>
+  *- Alpha*: Defines if the self have a alpha channel;<br>
+  *- Float*: Defines if the return should be in 0-1 or brute RGB(A);<br>
+  *- Bits:* Defines each color channel (default is 255, RRGGBBAA).
 
   Tips:<br>
-  *- Strings and numbers are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- Strings are converted with better performance and doesn't require "#" in its start*;<br>
   *- If self -> number, the return will be a hexadecimal string with its value*;<br>
   *- Spaces == true keeps spaces and not spaces removes them*;<br>
   *- Str can make the code slightly slower, but may worth it*;<br>
@@ -240,7 +240,10 @@ Now, the next step is loading the package:
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")(255)
-   local hexa = Hexadec.Clean("F F", false)
-   print(hexa) -- FF
+   local hexaint = Hexadec.Color("FFFFFFFF", true, false, 255) -- Will be optimized
+   print(hexaint) -- 255
+
+   local hexafloat = Hexadec.Color("FFFFFFFF", true, true, 255) -- Will be optimized
+   print(hexafloat) -- 1.0
   ````
 ### More coming soon...
