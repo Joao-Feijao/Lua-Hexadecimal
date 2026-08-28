@@ -22,6 +22,8 @@ Also, I recommend using 'Color' and 'Hex' with it!
     
     print(hexadec.NCode(10, nil, nil, "255")) -- {FF}
   ```
+</details>
+
 <details>
   <summary>⚡ <b>Benchmarks</b></summary>
   Here you can see Hexadec compared to other LuaRocks modules!
@@ -42,7 +44,7 @@ Also, I recommend using 'Color' and 'Hex' with it!
     end
   ```
   <details>
-    <summary><b>Lua Version: 5.4</b></summary><br>
+    <summary><b>Lua Version: 5.4</b></summary>
     
     <details>
       <summary><b>Version: 1.0.0</b></summary><br>
@@ -78,7 +80,7 @@ Also, I recommend using 'Color' and 'Hex' with it!
     </details>
     
     <details>
-      <summary><b>Version: 1.1.0</b></summary><br>
+      <summary><b>Version: 1.1.0</b></summary>
       
     ```lua
       NCODE                    : 0.056 secs   6       {017 | , 001 | }
@@ -103,10 +105,10 @@ Also, I recommend using 'Color' and 'Hex' with it!
     </details>
   </details>
 </details>
-</details>
 
 <details>
   <summary>🔤 <b>Documentation</b></summary>
+  
   **FUNCTION: Setup(...):**
     Description: The setup function mentioned in the Starting section.
   
