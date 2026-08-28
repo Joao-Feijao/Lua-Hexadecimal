@@ -1,4 +1,4 @@
-# Introduction for Lua Hexadecimal
+<p># Introduction for Lua Hexadecimal
 Hi, I made a module in Lua that can manipulate hexadecimal!
 It can convert numbers of a n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
 back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode for the decode function.
@@ -111,13 +111,13 @@ Also, I recommend using 'Color' and 'Hex' with it!
   **FUNCTION: Setup(...):**<br>
     Description: The setup function mentioned in the Starting section.
   
-  Return:<br>
-  *- Hexadec Module or SECRET MESSAGE*.
-  
-  Args:<br>
-  *- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
-  
-  Example:<br>
+    Return:<br>
+    *- Hexadec Module or SECRET MESSAGE*.
+    
+     Args:<br>
+    *- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
+    
+    Example:<br>
     ```lua
     local Hexadec = require("hexadec")
     print (Hexadec) -- function: 0x... -- Setup function
@@ -331,4 +331,4 @@ Also, I recommend using 'Color' and 'Hex' with it!
     ```
 </details>
 
-More coming soon...
+More coming soon...</p>
