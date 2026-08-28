@@ -33,7 +33,7 @@ Now, the next step is loading the package:
   - Made on VSCode.
 
   Benckmark function:<br>
-```lua
+  ```lua
     local function Set(name, func, reps, ...)
     local ini= os.clock()
     for _ = 1, reps do
@@ -41,12 +41,12 @@ Now, the next step is loading the package:
     end
     local en = os.clock()
     print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
-  end
-```
+    end
+  ```
   <details>
     <summary><b>Version: 1.0.0</b></summary><br>
     
-```lua
+    ```lua
     require("hex")
     require("hexadec")
     
@@ -73,12 +73,12 @@ Now, the next step is loading the package:
     COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
     Hex: Encode              : 0.003 secs   121 abc 31323120616263
     Hex: Decode              : 0.003 secs   31323120616263  121 abc
-```
+    ```
   </details>
   <details>
     <summary><b>Version: 1.1.0</b></summary><br>
     
-```lua
+    ```lua
     require("hex")
     require("hexadec")
     
@@ -105,7 +105,7 @@ Now, the next step is loading the package:
     COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
     Hex: Encode              : 0.003 secs   121 abc 31323120616263
     Hex: Decode              : 0.003 secs   31323120616263  121 abc
-```
+    ```
   </details>
 </details>
 
@@ -146,11 +146,11 @@ Now, the next step is loading the package:
   *- If the min is nil or min == 0 and sep == "", then it will activate a more efficient string pattern*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.NCode(16, nil, nil, "255") -- Will be extremely optimized
    print(hexa) -- {255, 255}
-   ````
+   ```
 
 **FUNCTION: Hexadec.SCode(str: string, min: number, sep: string):**<br>
   Description: A function that uses a single string and converts every UTF8 and ASCII character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep to create a hexadec type.
@@ -169,11 +169,11 @@ Now, the next step is loading the package:
   *- If the min is nil or min == 0 and sep == "", then it will activate a more efficient string pattern*.
   
   Example:<br>
-   ````lua
+  ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.SCode("255", nil, nil) -- Will be optimized
    print(hexa) -- {32, 35, 35}
-  ````
+  ```
 
 **FUNCTION (METHOD): Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
   Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.<br>
@@ -196,11 +196,11 @@ Now, the next step is loading the package:
   *- Str makes the code slightly slower, but may worth it*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.NDecode("FF", false, false) -- Will be optimized
    print(hexa) -- 255
-   ````
+   ```
 **FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
   Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
   
@@ -219,11 +219,11 @@ Now, the next step is loading the package:
   *- Secure makes the code slightly slower, but may worth it*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.SDecode({1, 1, 1}, false, false)
    print(hexa[1]) -- A
-  ````
+  ```
 **FUNCTION (METHOD): Hexadec.IsHex(self: hexadec type | string | number, spaces: boolean):**<br>
   Description: A function that checks if self is a valid hexadecimal or not (can ignore spaces).
   
@@ -241,11 +241,11 @@ Now, the next step is loading the package:
   *- Spaces makes every %s character be included as valid*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.IsHex("FF", false) -- Will be optimized
    print(hexa) -- true
-  ````
+  ```
 **FUNCTION (METHOD): Hexadec.Clean(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
   Description: A function that cleans self, removing every non-hexadecimal character, with a option to keep spaces or not.
   
@@ -269,11 +269,11 @@ Now, the next step is loading the package:
   *- Str is only used when self -> hexadec type, so you generally can avoid it*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.Clean("F F", false)
    print(hexa) -- FF
-  ````
+  ```
 **FUNCTION (METHOD): Hexadec.Dump(self: hexadec type, mode: string, inter: table | number, line: number):**<br>
   Description: A function that generates a hexdump in the terminal.
   
@@ -295,12 +295,12 @@ Now, the next step is loading the package:
   *- The line doesn't include the line notation size*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexa = Hexadec.Dump(hexadec.NCode(10, nil, nil, "255"), "C", nil, 16)
    00000001: FF |  -- Output
    print(hexa) -- nil
-  ````
+  ```
 **FUNCTION (METHOD): Hexadec.Color(self: hexadec type | string, alpha: boolean, float: boolean, bits: number):**<br>
   Description: A function that creates a RGB or RGBA using a hexadec type or a string.
   
@@ -324,13 +324,13 @@ Now, the next step is loading the package:
   *- Str is only used when self -> hexadec type, so you generally can avoid it*.
   
   Example:<br>
-   ````lua
+   ```lua
    local Hexadec = require("hexadec")(255)
    local hexaint = Hexadec.Color("FFFFFFFF", true, false, 255) -- Will be optimized
    print(hexaint) -- 255
 
    local hexafloat = Hexadec.Color("FFFFFFFF", true, true, 255) -- Will be optimized
    print(hexafloat) -- 1.0
-  ````
+  ```
 </details>
 More coming soon...
