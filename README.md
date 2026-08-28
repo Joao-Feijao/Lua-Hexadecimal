@@ -42,7 +42,7 @@ Now, the next step is loading the package:
    print (Hexadec(255)) -- table: 0x... (Hexadec Module) - With cache size
   ````
 **FUNCTION: Hexadec.NCode(base: number, min: number, sep: string, ...):**<br>
-  Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep.
+  Description: A function that uses numeric strings (in base) passed in vararg that can have a minimum size of min (filled with 0) and a separator sep to create a hexadec type.
   
   Return:<br>
   *- Hexadec type (table) with string values*.
@@ -66,7 +66,7 @@ Now, the next step is loading the package:
    ````
 
 **FUNCTION: Hexadec.SCode(str: string, min: number, sep: string):**<br>
-  Description: A function that uses a single string and converts every UTF8 and ASCII character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep.
+  Description: A function that uses a single string and converts every UTF8 and ASCII character in a hexadec type that can have a minimum size of min (each filled with 0) and a separator sep to create a hexadec type.
   
   Return:<br>
   *- Hexadec type (table) with string values*.
@@ -88,7 +88,7 @@ Now, the next step is loading the package:
   ````
 
 **FUNCTION: Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
-  Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.
+  Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.<br>
   
   Return:<br>
   *Self -> number - Number*;<br>
@@ -127,7 +127,54 @@ Now, the next step is loading the package:
 
   Tips:<br>
   *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-  *- Caps == true uses uppercase and not Caps uses lowercase*;<br>
+  *- Caps == true uses lowercase and not Caps uses uppercase*;<br>
+  *- Secure makes the code slightly slower, but may worth it*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.SDecode("FF", false, false) -- Will be optimized
+   print(hexa) -- 255
+  ````
+###UNDER CONSTRUCTION!!!
+**FUNCTION: Hexadec.IsHex(self: hexadec type | string | number, spaces: boolean):**<br>
+  Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+  
+  Return:<br>
+  *Self -> string - Number*;<br>
+  *Self -> hexadec type - String*<br>;
+  *Self -> hexadec type - Boolean*.
+
+  Args:<br>
+  *- Self*: Can be a hexadec type, a string or a number;<br>
+  *- Spaces*: Defines if the self uses uppercase or lowercase letters for the conversion.
+
+  Tips:<br>
+  *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- Caps == true uses lowercase and not Caps uses uppercase*;<br>
+  *- Secure makes the code slightly slower, but may worth it*.
+  
+  Example:<br>
+   ````lua
+   local Hexadec = require("hexadec")(255)
+   local hexa = Hexadec.SDecode("FF", false, false) -- Will be optimized
+   print(hexa) -- 255
+  ````
+**FUNCTION: Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
+  Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+  
+  Return:<br>
+  *Self -> string - Number*;<br>
+  *Self -> hexadec type - String*.
+
+  Args:<br>
+  *- Self*: Can be a hexadec type, a string or a number;<br>
+  *- Caps*: Defines if the self uses uppercase or lowercase letters for the conversion;<br>
+  *- Secure*: Uses Hexadec.IsHex before trying the conversion.
+
+  Tips:<br>
+  *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+  *- Caps == true uses lowercase and not Caps uses uppercase*;<br>
   *- Secure makes the code slightly slower, but may worth it*.
   
   Example:<br>
