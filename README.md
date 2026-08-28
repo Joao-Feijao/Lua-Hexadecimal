@@ -35,16 +35,16 @@ Specs:<br>
 Benckmark function:<br>
 ```lua
 local function Set(name, func, reps, ...)
-local ini= os.clock()
-for _ = 1, reps do
-func(...)
-end
-local en = os.clock()
-print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
+  local ini = os.clock()
+  for _ = 1, reps do
+    func(...)
+  end
+  local en = os.clock()
+  print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
 end
 ```
 <details>
-<summary><b>Lua Version: 5.4</b></summary>
+<summary><b>Lua Version: 5.4</b></summary><br>
 
 <details>
 <summary><b>Version: 1.0.0</b></summary>
