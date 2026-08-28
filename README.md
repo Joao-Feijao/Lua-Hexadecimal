@@ -103,6 +103,9 @@ Also, I recommend using 'Color' and 'Hex' with it!
     </details>
   </details>
 </details>
+</details>
+
+<details>
   <summary>🔤 <b>Documentation</b></summary>
   **FUNCTION: Setup(...):**
     Description: The setup function mentioned in the Starting section.
@@ -326,4 +329,5 @@ Also, I recommend using 'Color' and 'Hex' with it!
      print(hexafloat) -- 1.0
     ```
 </details>
+
 More coming soon...
