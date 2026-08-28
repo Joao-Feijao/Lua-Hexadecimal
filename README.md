@@ -34,7 +34,7 @@ Now, the next step is loading the package:
 
   Benckmark function:<br>
   ````lua
-  local function Set(name, func, reps, ...)
+    local function Set(name, func, reps, ...)
     local ini= os.clock()
     for _ = 1, reps do
         func(...)
@@ -45,10 +45,10 @@ Now, the next step is loading the package:
   ````
   <details>
     <summary><b>Version: 1.0.0</b></summary><br>
-   ````lua
-    
+  ````lua
     require("hex")
     require("hexadec")
+    
     Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
     Set("SCODE", hexadec.SCode, 50000, "121 abc", 2, " ")
     Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
@@ -59,6 +59,7 @@ Now, the next step is loading the package:
     Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
     Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
     Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
+    
     -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
     NCODE                    : 0.058 secs   6       017 | 001 | 
     SCODE                    : 0.096 secs   121 abc 31 32 31 20 61 62 63 
@@ -71,14 +72,13 @@ Now, the next step is loading the package:
     COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
     Hex: Encode              : 0.003 secs   121 abc 31323120616263
     Hex: Decode              : 0.003 secs   31323120616263  121 abc
-  ````
   </details>
   <details>
     <summary><b>Version: 1.1.0</b></summary><br>
-     ````lua
+  ````lua
     require("hex")
     require("hexadec")
-
+    
     Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
     Set("SCODE", hexadec.SCode, 50000, "121 abc", 2, " ")
     Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
@@ -89,7 +89,7 @@ Now, the next step is loading the package:
     Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
     Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
     Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
-
+    
     -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
     NCODE                    : 0.058 secs   6       017 | 001 | 
     SCODE                    : 0.096 secs   121 abc 31 32 31 20 61 62 63 
@@ -102,7 +102,6 @@ Now, the next step is loading the package:
     COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
     Hex: Encode              : 0.003 secs   121 abc 31323120616263
     Hex: Decode              : 0.003 secs   31323120616263  121 abc
-    ````
   </details>
 </details>
 
