@@ -18,15 +18,67 @@ Now, the next step is loading the package:
 
   print(type(hexset), type(hexsetlite)) -- function  function -- They both return a setup function
   hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
-  local hexadec = hexset(10)
+  local hexadec = hexset(10) -- Will return the Hexadec module
   
   print(hexadec.NCode(10, nil, nil, "255")) -- {FF}
 ````
 </details>
 
 <details>
-<summary>🔍 <b>Documentation</b></summary>
-# Functions documentation
+  <summary>⚡<b>Benchmarks</b></summary>
+  Here you can see Hexadec compared to other LuaRocks modules!
+  Specs:<br>
+  - R7 5700G;<br>
+  - 16GB DDR4;<br>
+  - Made on VSCode.
+
+  Benckmark function:<br>
+  ````lua
+  local function Set(name, func, reps, ...)
+    local ini= os.clock()
+    for _ = 1, reps do
+        func(...)
+    end
+    local en = os.clock()
+    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
+  end
+  ````
+  <details>
+    <summary><b>Version: 1.0.0</b></summary>
+  
+    ````lua
+    require("hex")
+    require("hexadec")
+
+    Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
+    Set("SCODE", hexadec.SCode, 50000, "121 abc", 2, " ")
+    Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
+    Set("SDECODE", hexadec.SDecode, 50000, "A1", "A1")
+    Set("ISHEX", hexadec.IsHex, 50000, 123, false)
+    Set("CLEAN", hexadec.Clean, 50000, 123, false, true)
+    Set("DUMP", hexadec.Dump, 5, hexadec.NCode(10, nil, nil, "200"), "C")
+    Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+    Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
+    Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
+
+    -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
+    NCODE                    : 0.058 secs   6       017 | 001 | 
+    SCODE                    : 0.096 secs   121 abc 31 32 31 20 61 62 63 
+    NDECODE                  : 0.004 secs   161     161
+    SDECODE                  : 0.007 secs   A1      161
+    ISHEX                    : 0.021 secs   123     true
+    CLEAN                    : 0.014 secs   123     7B
+    -- Hexdump
+    DUMP                     : 0.001 secs   C8
+    COLOR                    : 0.032 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
+    Hex: Encode              : 0.003 secs   121 abc 31323120616263
+    Hex: Decode              : 0.003 secs   31323120616263  121 abc
+    ````
+  </details>
+</details>
+
+<details>
+<summary>🔤 <b>Documentation</b></summary>
 **FUNCTION: Setup(...):**
   Description: The setup function mentioned in the Starting section.
 
@@ -249,4 +301,4 @@ Now, the next step is loading the package:
    print(hexafloat) -- 1.0
   ````
 </details>
-### More coming soon...
+More coming soon...
