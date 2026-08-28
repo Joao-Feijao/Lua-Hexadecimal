@@ -45,7 +45,7 @@ Now, the next step is loading the package:
   ````
   <details>
     <summary><b>Version: 1.0.0</b></summary><br>
-  ```lua
+   ```lua
   require("hex")
   require("hexadec")
   Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
@@ -74,7 +74,7 @@ Now, the next step is loading the package:
   </details>
   <details>
     <summary><b>Version: 1.1.0</b></summary><br>
-    ````lua
+     ````lua
     require("hex")
     require("hexadec")
 
