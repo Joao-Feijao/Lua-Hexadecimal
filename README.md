@@ -200,20 +200,20 @@ Now, the next step is loading the package:
     *> "n" or "-n" require inter -> table ({start, end})*;<br>
     *> "s" or "-s" require inter -> number (ignore from start)*;<br>
   *- Inter*: Defines the interval of the hexdump;<br>
-  *- Line:* Defines the max characteres output for every line in the hexdump.
+  *- Line:* Defines the max characteres output for every line in the hexdump (default is 16).
 
   Tips:<br>
-  *- Strings and numbers are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-  *- If self -> number, the return will be a hexadecimal string with its value*;<br>
-  *- Spaces == true keeps spaces and not spaces removes them*;<br>
-  *- Str can make the code slightly slower, but may worth it*;<br>
-  *- Str is only used when self -> hexadec type, so you generally can avoid it*.
+  *- Start and end in inter should be numbers*;<br>
+  *- If line is way too small, you can have some problems (Ctrl + C!!!)*;<br>
+  *- If mode is invalid, a error call will occur*;<br>
+  *- The line doesn't include the line notation size*.
   
   Example:<br>
    ````lua
    local Hexadec = require("hexadec")(255)
-   local hexa = Hexadec.Clean("F F", false)
-   print(hexa) -- FF
+   local hexa = Hexadec.Dump(hexadec.NCode(10, nil, nil, "255"), "C", nil, 16)
+   00000001: FF |  -- Output
+   print(hexa) -- nil
   ````
 **FUNCTION (METHOD): Hexadec.Color(self: hexadec type | string | number, spaces: boolean, str: boolean):**<br>
   Description: A function that cleans self removing every non-hexadecimal character, with a option to keep spaces or not.
