@@ -4,12 +4,12 @@ It can convert numbers of a n-base (up to 36) and strings to hexadec (special ty
 back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode for the decode function.
 Also, I recommend using 'Color' and 'Hex' with it!
 
-<details>
+<details open>
 <summary>🔍 <b>Starting</b></summary>
-You can download via LuaRocks through the [repository website](https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:
-````bash
+You can download via LuaRocks through the [repository website](https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:<br>
+```bash
 $ luarocks install hexadec
-````
+```
 
 Now, the next step is loading the package:
 ```lua
@@ -409,8 +409,8 @@ Under construction...
 </details>
 <details>
 <summary><b>v1.0.0-1 - Release</b></summary>
-*- Features:<br>
--> Setup;<br>
+1 - Features:<br>
+*-> Setup;<br>
 -> Hexadec.Metatable;<br>
 -> Hexadec.HEX;<br>
 -> Hexadec.NCode;<br>
