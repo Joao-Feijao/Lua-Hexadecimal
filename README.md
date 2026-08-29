@@ -6,7 +6,8 @@ Also, I recommend using 'Color' and 'Hex' with it!
 
 <details open>
 <summary>🔍 <b>Starting</b></summary>
-You can download via LuaRocks through the [repository website](https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:<br>
+You can download via LuaRocks through the [repository website](https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:
+  
 ```bash
 $ luarocks install hexadec
 ```
@@ -389,12 +390,17 @@ Under construction...
 <details>
 <summary>📜 <b>Change log</b></summary>
 <details>
-<summary>⚡ <b>v1.1.0-2</b></summary>
+<summary>⌚ <b>v1.1.1-1</b> - Patch <b>(NEWER RELEASE)</b></summary>
+1 - Corrected Hexadec_lite.Decode;<br>
+2 - Brings a better general GitHub folder, with a corrected "Benchmark.lua"
+</details>
+<details>
+<summary>⚡ <b>v1.1.0-2</b> - Revision</summary>
 *- Corrected 1.1.0 LuaRocks error when trying to download the module.*
 </details>
 <details>
 <summary><b>v1.1.0-1 - Lite introduction</b></summary>
-1 - New Hexadec lite mode (for those who wants something like 'hex' without using a C compiler);<br>
+1 - New Hexadec lite mode (for those who wants something like "hex" without using a C compiler);<br>
 2 - Color now have dynamic width color channels (you don't need only 256 bits anymore);<br>
 3 - New otimization and file for Lua 5.5 (automatic detection on LuaRocks), featuring table.create and constants (massive increase);<br>
 4 - Hexadec.NCode str argument was added;<br>
@@ -404,7 +410,7 @@ Under construction...
 8 - New Setup tutorial for basic help.
 </details>
 <details>
-<summary>⚡ <b>v1.0.0-2</b></summary>
+<summary>⚡ <b>v1.0.0-2</b> - Revision</summary>
 *- Corrected 1.1.0 LuaRocks error when trying to download the module.*
 </details>
 <details>
