@@ -392,12 +392,15 @@ Under construction...
 <summary>⚡ <b>v1.1.0-2</b></summary>
 *- Corrected 1.1.0 LuaRocks error when trying to download the module.*
 </details>
+<details>
   <summary><b>v1.1.0-1</b></summary>
 *- ...*
 </details>
+<details>
 <summary>⚡ <b>v1.0.0-2</b></summary>
 *- Corrected 1.1.0 LuaRocks error when trying to download the module.*
 </details>
+<details>
 <summary><b>v1.0.0-1 - Release</b></summary>
 *- Features:
 -> Setup;
