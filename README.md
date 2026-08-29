@@ -393,8 +393,15 @@ Under construction...
 *- Corrected 1.1.0 LuaRocks error when trying to download the module.*
 </details>
 <details>
-  <summary><b>v1.1.0-1</b></summary>
-*- ...*
+<summary><b>v1.1.0-1 - Lite introduction</b></summary>
+1 - New Hexadec lite mode (for those who wants something like 'hex' without using a C compiler);<br>
+2 - Color now have dynamic width color channels (you don't need only 256 bits anymore);<br>
+3 - New otimization and file for Lua 5.5 (automatic detection on LuaRocks), featuring table.create and constants (massive increase);<br>
+4 - Hexadec.NCode str argument was added;<br>
+5 - Hexadec.IsHex spaces argument was removed;<br>
+6 - Changed Hexadec.Color bits default from 255 to 256;<br>
+7 - The Ax is being discontinued because it's useless...;<br>
+8 - New Setup tutorial for basic help.
 </details>
 <details>
 <summary>⚡ <b>v1.0.0-2</b></summary>
@@ -402,19 +409,19 @@ Under construction...
 </details>
 <details>
 <summary><b>v1.0.0-1 - Release</b></summary>
-*- Features:
--> Setup;
--> Hexadec.Metatable;
--> Hexadec.HEX;
--> Hexadec.NCode;
--> Hexadec.SCode;
--> Hexadec.NDecode;
--> Hexadec.SDecode;
--> Hexadec.IsHex;
--> Hexadec.Clean;
--> Hexadec.Dump;
+*- Features:<br>
+-> Setup;<br>
+-> Hexadec.Metatable;<br>
+-> Hexadec.HEX;<br>
+-> Hexadec.NCode;<br>
+-> Hexadec.SCode;<br>
+-> Hexadec.NDecode;<br>
+-> Hexadec.SDecode;<br>
+-> Hexadec.IsHex;<br>
+-> Hexadec.Clean;<br>
+-> Hexadec.Dump;<br>
 -> Hexadec.Color.*
 </details>
 </details>
 
-More coming soon... (FAQ for discussion questions or Extras?)
+More coming soon... (FAQ for discussion questions, Extras or Mechanics (like cache)? And a better documentation organization, because y'all deserve it :D)
