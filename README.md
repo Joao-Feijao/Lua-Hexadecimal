@@ -151,10 +151,13 @@ Lite: DECODE             : 0.020 secs   table: 0000000000eb5e40 A
 ```
 </details>
 </details>
+</details>
 
 <details>
 <summary>🔤 <b>Documentation</b></summary>
-
+<details>
+<summary><b>Normal version</b></summary>
+  
 **FUNCTION: Setup(...):**<br>
 Description: The setup function mentioned in the Starting section.
 
@@ -377,5 +380,38 @@ local hexafloat = Hexadec.Color("FFFFFFFF", true, true, 255) -- Will be optimize
 print(hexafloat) -- 1.0
 ```
 </details>
+<details>
+<summary><b>Lite version</b></summary>
+Under construction...
+</details>
+</details>
 
-More coming soon...
+<details>
+<summary>📜 <b>Change log</b></summary>
+<details>
+<summary>⚡ <b>v1.1.0-2</b></summary>
+*- Corrected 1.1.0 LuaRocks error when trying to download the module.*
+</details>
+  <summary><b>v1.1.0-1</b></summary>
+*- ...*
+</details>
+<summary>⚡ <b>v1.0.0-2</b></summary>
+*- Corrected 1.1.0 LuaRocks error when trying to download the module.*
+</details>
+<summary><b>v1.0.0-1 - Release</b></summary>
+*- Features:
+-> Setup;
+-> Hexadec.Metatable;
+-> Hexadec.HEX;
+-> Hexadec.NCode;
+-> Hexadec.SCode;
+-> Hexadec.NDecode;
+-> Hexadec.SDecode;
+-> Hexadec.IsHex;
+-> Hexadec.Clean;
+-> Hexadec.Dump;
+-> Hexadec.Color.*
+</details>
+</details>
+
+More coming soon... (FAQ for discussion questions or Extras?)
