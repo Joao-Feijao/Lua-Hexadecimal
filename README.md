@@ -45,7 +45,6 @@ end
 ```
 <details>
 <summary><b>Lua Version: 5.4</b></summary><br>
-
 <details>
 <summary><b>Version: 1.0.0</b></summary>
 
@@ -100,21 +99,56 @@ Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
 Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
 
 -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
-NCODE : 0.056 secs 6 {017 | , 001 | }
-SCODE : 0.099 secs 121 abc {31 , 32 , 31 , 20 , 61 , 62 , 63 }
-NDECODE : 0.005 secs 161 161
-SDECODE : 0.007 secs A1 161
-ISHEX : 0.020 secs 123 true
-CLEAN : 0.015 secs 123 7B
+NCODE                    : 0.057 secs   6       {017 | , 001 | }
+SCODE                    : 0.097 secs   121 abc {31 , 32 , 31 , 20 , 61 , 62 , 63 }
+NDECODE                  : 0.005 secs   161     161
+SDECODE                  : 0.006 secs   A1      161
+ISHEX                    : 0.020 secs   123     true
+CLEAN                    : 0.015 secs   123     7B
 -- Hexdump
-DUMP : 0.001 secs {C8}
-COLOR : 0.032 secs #FFFFFFFF 1.0 1.0 1.0 1.0
-Lite: CODE : 0.043 secs 121 abc table: 0000000000e4ec30
-Lite: DECODE : 0.021 secs A1 table: 0000000000e33810
-Hex: Encode : 0.002 secs 121 abc 31323120616263
-Hex: Decode : 0.002 secs 31323120616263 121 abc
+DUMP                     : 0.001 secs   {C8}
+COLOR                    : 0.033 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
+Lite: CODE               : 0.043 secs   121 abc table: 000000000072e150
+Lite: DECODE             : 0.021 secs   table: 000000000072e1d0 A
+Hex: Encode              : 0.003 secs   121 abc 31323120616263
+Hex: Decode              : 0.003 secs   31323120616263  121 abc
 ```
 </details>
+</details>
+
+<details>
+<summary><b>Lua Version: 5.5</b></summary><br>
+<details>
+<summary><b>Version: 1.1.0</b></summary>
+
+```lua
+local hexadec = require("hexadec")
+local hl = require("hexadec_lite")
+
+Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
+Set("SCODE", hexadec.SCode, 50000, "121 abc", 2, " ")
+Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
+Set("SDECODE", hexadec.SDecode, 50000, "A1")
+Set("ISHEX", hexadec.IsHex, 50000, 123, false)
+Set("CLEAN", hexadec.Clean, 50000, 123, false, true)
+Set("DUMP", hexadec.Dump, 5, hexadec.NCode(10, nil, nil, "200"), "C")
+Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+Set("Lite: CODE", hl.Code, 50000, "121 abc")
+Set("Lite: DECODE", hl.Decode, 50000, {"41"})
+
+-- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
+NCODE                    : 0.051 secs   6       {017 | , 001 | }
+SCODE                    : 0.085 secs   121 abc {31 , 32 , 31 , 20 , 61 , 62 , 63 }
+NDECODE                  : 0.004 secs   161     161
+SDECODE                  : 0.006 secs   A1      161
+ISHEX                    : 0.004 secs   123     true
+CLEAN                    : 0.011 secs   123     7B
+-- Hexdump
+DUMP                     : 0.001 secs   {C8}
+COLOR                    : 0.025 secs   #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
+Lite: CODE               : 0.025 secs   121 abc table: 0000000000eb65c0
+Lite: DECODE             : 0.020 secs   table: 0000000000eb5e40 A
+```
 </details>
 </details>
 
