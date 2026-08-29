@@ -1,0 +1,34 @@
+package.path = "E:\\Lua Int\\Meus Arquivos Lua\\Projetos Reais\\Hexadec\\?.lua"
+local hexadec = require("hexadec53")(255) -- Start: The arg is the cache size for bits
+local hl = require("hexadec_lite53")(255, 255, true) -- Cache size, ULTRA CACHE, Manutention Mode
+
+local a = function()
+    
+end
+local b = function(x)
+    return tonumber("F", 16)
+end
+local function Set(name, func, reps, ...)
+    local ini = os.clock()
+    for _ = 1, reps do
+        func(...)
+    end
+    local en = os.clock()
+    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
+end
+
+Set("NCODE", hexadec.NCode, 50000, 6, 3, " | ", "35", "1")
+Set("SCODE", hexadec.SCode, 50000, "121 abc")
+Set("NDECODE", hexadec.NDecode, 50000, 0xA1)
+Set("SDECODE", hexadec.SDecode, 50000, "1")
+Set("ISHEX", hexadec.IsHex, 50000, 123, false)
+Set("CLEAN", hexadec.Clean, 50000, 123, false, true)
+Set("DUMP", hexadec.Dump, 5, hexadec.NCode(10, nil, nil, "200"), "C")
+Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+
+print ("--- Lite ---")
+
+Set("Lite: CODE", hl.Code, 50000, "121 abc")
+Set("Lite: DECODE", hl.Decode, 50000, {"1A"})
+Set("A", a, 50000)
+Set("B", b, 50000)

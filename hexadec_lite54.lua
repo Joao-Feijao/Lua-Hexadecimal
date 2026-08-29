@@ -8,9 +8,13 @@ return function(...)
 
         return "Thanks for testing the Hexadec!"
     end
-    local A <const> = table.create
-    local Hexadec <const> = A(0, 4)
-    local UCH <const> = (Cache and A(0, Cache)) or nil
+    local Hexadec <const> = {}
+    local UCH <const> = (Cache and {}) or nil
+    if UCH then
+        for i = 1, Cache do
+            UCH[i] = false
+        end
+    end
     local UCHS = (MMode and 0) or nil
     local Al = (MMode and false) or nil
     local Rig = (MMode and Cache) or nil
@@ -36,14 +40,14 @@ return function(...)
                 if Al then
                     Al(k, v)
                 end
-                local r <const> = Y
+                local r <const> = rawset
                 r(self, k, v)
                 UCHS = UCHS + 1
             end}
         local setmetatable <const> = setmetatable
         setmetatable(UCH, m)
     end
-    local HEX <const> = A(ArgT, 0)
+    local HEX <const> = {}
     local Sf <const> = string.format
     local Fmt <const> = "%02X"
     for i = 0, ArgT do
@@ -54,7 +58,6 @@ return function(...)
     local D <const> = tonumber
     local E <const> = string.char
     local F <const> = pairs
-    local G <const> = print
     local Code <const> = (Cache and function(str)
         local s <const> = str
         local u <const> = UCH
@@ -63,8 +66,7 @@ return function(...)
             return b
         end
         local l <const> = #s
-        local c <const> = A
-        local e <const> = c(l, 0)
+        local e <const> = {}
         local h <const> = HEX
         local a = C
         for i = 1, l do
@@ -78,8 +80,7 @@ return function(...)
     end) or function(str)
         local s <const> = str
         local l <const> = #s
-        local c <const> = A
-        local e <const> = c(l, 0)
+        local e <const> = {}
         local h <const> = HEX
         local a = C
         for i = 1, l do
@@ -97,13 +98,12 @@ return function(...)
         local l <const> = #t
         local n <const> = D
         local c <const> = E
-        local z <const> = A
-        local b <const> = z(l, 0)
+        local x <const> = {}
         for i = 1, l do
-            b[i] = c(n(t[i], 16) or 0)
+            x[i] = c(n(t[i], 16) or 0)
         end
         local y <const> = B
-        local d <const> = y(b)
+        local d <const> = y(x)
         u[t] = d
         u[d] = t
         return d
@@ -112,8 +112,7 @@ return function(...)
         local l <const> = #t
         local n <const> = D
         local c <const> = E
-        local z <const> = A
-        local b <const> = z(l, 0)
+        local b <const> = {}
         for i = 1, l do
             b[i] = c(n(t[i], 16) or 0)
         end

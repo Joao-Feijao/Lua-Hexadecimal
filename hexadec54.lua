@@ -1,9 +1,9 @@
 return function(...)
     local args <const> = {...}
-
-    local tcount = args[1]
-    if type(tcount) ~= "number" then
-        print [[How to setup Hexadec for Lua 5.5:
+    
+    local bytelen <const> = args[1]
+    if type(bytelen) ~= "number" then
+        print [[How to setup Hexadec for Lua 5.4:
         1 - You should execute this with at least one argument, that's your Hexadec.HEX cache (makes the conversion faster)
         2 - See my Github please :(
         3 - Good luck!]]
@@ -11,22 +11,13 @@ return function(...)
         return "Thanks for testing the Hexadec!"
     end
 
-    local tab <const> = table.create(0, 1)
+    local tab <const> = {}
 
-    local Hexadec <const> = table.create(0, 8) -- Metatable = true, NCode = true, SCode = true, NDecode = true, SDecode = true, IsHex = true, Clean = true, Dump = true
+    local Hexadec <const> = {}
 
-    local counter = 0
-    
-    local bytelen <const> = args[1]
+    local HEX <const> = {}
 
-    repeat
-        tcount = tcount >> 1
-        counter = counter + 1
-    until tcount > 1
-
-    local HEX <const> = table.create(2^counter, 0)
-
-    for i = 0, (args[1] or 255) do
+    for i = 0, bytelen do
         HEX[i] = string.format("%02X", i)
     end
 
@@ -84,8 +75,7 @@ return function(...)
         local base <const> = base or 10
 
         if base == 16 then
-            local create <const> = table.create
-            local hex <const> = create(#vars, 0)
+            local hex <const> = {}
             
             if #vars == 1 then
                 hex[1] = vars[1]
@@ -113,8 +103,7 @@ return function(...)
         local sep <const> = sep
         
         local h <const> = HEX
-        local create <const> = table.create
-        local hex <const> = create(#vars, 0)
+        local hex <const> = {}
         local format <const> = string.format
         local tonumber <const> = tonumber
         local bytelen <const> = bytelen
@@ -172,8 +161,7 @@ return function(...)
         local sep <const> = sep
 
         local format <const> = string.format
-        local create = table.create
-        local hex <const> = create(#str + 1, 0)
+        local hex <const> = {}
 
         local n = 0
         local len = #str
@@ -290,9 +278,8 @@ return function(...)
         
         local char <const> = string.char
 
-        local create <const> = table.create
         local len <const> = #self
-        local nums <const> = create(len, 0)
+        local nums <const> = {}
 
         local cap <const> = (caps and 64) or 96
         local tonumber <const> = tonumber
@@ -381,9 +368,8 @@ return function(...)
         local fmt <const> = spaces and "[^0-9a-fA-F%s]+" or "[^0-9a-fA-F]+"
         local blank <const> = ""
         local gsub <const> = string.gsub
-        local create <const> = table.create
         local len <const> = #self
-        local hex <const> = create(len, 0)
+        local hex <const> = {}
 
         for i = 1, #len do
             hex[i] = gsub(self[i], fmt, blank)
@@ -416,8 +402,7 @@ return function(...)
 
         local bline <const> = "%07X"
         local len <const> = #self
-        local create <const> = table.create
-        local buffer <const> = create(len * 4, 0)
+        local buffer <const> = {}
         local n = 0
 
         if mode == "C" or mode == "-C" then
@@ -563,8 +548,7 @@ return function(...)
             error("Expected 'hexadec' and received '"..(t or type(self)).."'")
         end
 
-        local create <const> = table.create
-        local t <const> = create(8, 0)
+        local t <const> = {}
 
         t[1] = "#"
         local j = 1

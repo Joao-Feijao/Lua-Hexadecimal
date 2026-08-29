@@ -1,7 +1,8 @@
 package = "hexadec"
-version = "1.1.0-1"
+version = "1.2.0-1"
 source = {
-   url = "git+https://github.com/Joao-Feijao/Hexadec-LuaRocks-Module/"
+   url = "git+https://github.com/Joao-Feijao/Lua-Hexadecimal/",
+   tag = "v1.2.0-1"
 }
 description = {
    summary = "A module that can make conversion between hexadec, numbers and strings.",
@@ -18,7 +19,7 @@ description = {
       Dump - Hexdump from a hexadec type
       Color - Uses a table or a string to create RGB or RGBA (with Alpha)
    ]],
-   homepage = "https://github.com/Joao-Feijao/Hexadec-LuaRocks-Module/",
+   homepage = "https://github.com/Joao-Feijao/Lua-Hexadecimal/",
    license = "MIT"
 }
 dependencies = {
@@ -26,16 +27,29 @@ dependencies = {
 }
 build = {
    type = "builtin",
-   modules = {
-      hexadec = "hexadec.lua",
-      hexadec_lite = "hexadec_lite.lua"
-   },
-   
    platforms = {
       lua55 = {
          modules = {
             hexadec = "hexadec55.lua",
             hexadec_lite = "hexadec_lite55.lua"
+         }
+      },
+      lua54 = {
+         modules = {
+            hexadec = "hexadec54.lua",
+            hexadec_lite = "hexadec_lite54.lua"
+         }
+      },
+      lua53 = {
+         modules = {
+            hexadec = "hexadec53.lua",
+            hexadec_lite = "hexadec_lite53.lua"
+         }
+      },
+      lua51 = {
+         modules = {
+            hexadec = "hexadecJIT.lua",
+            hexadec_lite = "hexadec_liteJIT.lua"
          }
       }
    }
