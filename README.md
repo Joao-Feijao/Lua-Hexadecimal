@@ -33,7 +33,7 @@ Specs:<br>
 - 16GB DDR4;<br>
 - Made on VSCode.
 
-Benckmark function:<br>
+## Benckmark function:<br>
 ```lua
 local function Set(name, func, reps, ...)
   local ini = os.clock()
@@ -60,14 +60,6 @@ local b = function(x) -- Benchmark with the default function for decoding
     local tn = tonumber
 
     return tn("F", 16)
-end
-local function Set(name, func, reps, ...) -- Benchmark function
-    local ini = os.clock()
-    for _ = 1, reps do
-        func(...)
-    end
-    local en = os.clock()
-    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
 end
 
 local table_for_tests = hexadec.NCode(10, nil, nil, "1", "2", "3", "4")
@@ -178,14 +170,6 @@ local b = function(x) -- Benchmark with the default function for decoding
     local tn = tonumber
 
     return tn("F", 16)
-end
-local function Set(name, func, reps, ...) -- Benchmark function
-    local ini = os.clock()
-    for _ = 1, reps do
-        func(...)
-    end
-    local en = os.clock()
-    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
 end
 
 local table_for_tests = hexadec.NCode(10, nil, nil, "1", "2", "3", "4")
@@ -360,14 +344,6 @@ local b = function(x) -- Benchmark with the default function for decoding
 
     return tn("F", 16)
 end
-local function Set(name, func, reps, ...) -- Benchmark function
-    local ini = os.clock()
-    for _ = 1, reps do
-        func(...)
-    end
-    local en = os.clock()
-    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
-end
 
 local table_for_tests = hexadec.NCode(10, nil, nil, "1", "2", "3", "4")
 
@@ -430,18 +406,7 @@ Estressed - ISHEX       : 0.020 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.008 secs    123     7B
 
 Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
+-- Hexdump
 
 DUMP                    : 0.001 secs    {01, 02, 03, 04}
 
@@ -472,7 +437,6 @@ Tonumber                : 0.005 secs    nil     15
 ```
 </details>
 </details>
-
 <details>
 <summary>🌙 <b>Lua Version: 5.5</b></summary><br>
 <details>
@@ -521,14 +485,6 @@ local b = function(x) -- Benchmark with the default function for decoding
     local tn = tonumber
 
     return tn("F", 16)
-end
-local function Set(name, func, reps, ...) -- Benchmark function
-    local ini = os.clock()
-    for _ = 1, reps do
-        func(...)
-    end
-    local en = os.clock()
-    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
 end
 
 local table_for_tests = hexadec.NCode(10, nil, nil, "1", "2", "3", "4")
@@ -592,18 +548,7 @@ Estressed - ISHEX       : 0.021 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.010 secs    123     7B
 
 Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
-0000001 | 01 | 02 | 03
-0000002 | 
+-- Hexdump
 
 DUMP                    : 0.001 secs    {01, 02, 03, 04}
 
@@ -634,6 +579,21 @@ Tonumber                : 0.004 secs    nil     15
 ```
 </details>
 </details>
+
+## Ranking of the faster functions:
+**Function Hexadec.NCode**
+**Function Hexadec.SCode**
+**Function Hexadec.NDecode**
+**Function Hexadec.SDecode**
+**Function Hexadec.IsHex**
+**Function Hexadec.Clean**
+**Function Hexadec.Dump** 
+**Function Hexadec.Color**
+**Function Hexadec.Code**
+**Function Hexadec.Decode**
+**Function Hexadec.CClean**
+**Function Hexadec.Alert**
+**Function Hexadec.Rigid**
 </details>
 
 <details>
