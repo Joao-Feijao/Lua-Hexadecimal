@@ -45,9 +45,9 @@ local function Set(name, func, reps, ...)
 end
 ```
 <details>
-<summary><b>Lua Version: JIT</b></summary><br>
+<summary>🌙 <b>Lua Version: JIT</b></summary><br>
 <details>
-<summary><b>Version: 1.2.0</b></summary>
+<summary>---> <b>Version: 1.2.0</b></summary>
 
 ```lua
 local hexadec = require("hexadec")(255) -- Start: The arg is the cache size for bits
@@ -163,9 +163,9 @@ Tonumber                : 0.002 secs    nil     15
 </details>
 </details>
 <details>
-<summary><b>Lua Version: 5.3</b></summary><br>
+<summary>🌙 <b>Lua Version: 5.3</b></summary><br>
 <details>
-<summary><b>Version: 1.2.0</b></summary>
+<summary>---> <b>Version: 1.2.0</b></summary>
 
 ```lua
 local hexadec = require("hexadec")(255) -- Start: The arg is the cache size for bits
@@ -275,9 +275,9 @@ Tonumber                : 0.004 secs    nil     15
 </details>
 </details>
 <details>
-<summary><b>Lua Version: 5.4</b></summary><br>
+<summary>🌙 <b>Lua Version: 5.4</b></summary><br>
 <details>
-<summary><b>Version: 1.0.0</b></summary>
+<summary>---> <b>Version: 1.0.0</b></summary>
 
 ```lua
 local hexadec = require("hexadec")
@@ -309,7 +309,7 @@ Hex: Decode : 0.003 secs 31323120616263 121 abc
 ```
 </details>
 <details>
-<summary><b>Version: 1.1.0</b></summary>
+<summary>---> <b>Version: 1.1.0</b></summary>
 
 ```lua
 local hexadec = require("hexadec")(255)
@@ -345,12 +345,138 @@ Hex: Encode              : 0.003 secs   121 abc 31323120616263
 Hex: Decode              : 0.003 secs   31323120616263  121 abc
 ```
 </details>
+<details>
+<summary>---> <b>Version: 1.2.0</b></summary>
+
+```lua
+local hexadec = require("hexadec")(255) -- Start: The arg is the cache size for bits
+local hl = require("hexadec_lite")(255, 255, true) -- Cache size, ULTRA CACHE, Manutention Mode
+
+local a = function()
+    -- Literally nothing
+end
+local b = function(x) -- Benchmark with the default function for decoding
+    local tn = tonumber
+
+    return tn("F", 16)
+end
+local function Set(name, func, reps, ...) -- Benchmark function
+    local ini = os.clock()
+    for _ = 1, reps do
+        func(...)
+    end
+    local en = os.clock()
+    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
+end
+
+local table_for_tests = hexadec.NCode(10, nil, nil, "1", "2", "3", "4")
+
+print ("Benchmark!!!")
+Set("\nHexadec.NCode", hexadec.NCode, 50000, 10, nil, nil, "255")
+Set("\nEstressed - Hexadec.NCode", hexadec.NCode, 50000, 10, 3, " ", "255", "4095")
+Set("\nSCODE", hexadec.SCode, 50000, "123")
+Set("\nEstressed - Hexadec.SCode", hexadec.SCode, 50000, "WXYZ", 3, " ")
+Set("\nExtra - Hexadec.SCode", hexadec.SCode, 50000, [[ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]])
+Set("\nHexadec.NDecode", hexadec.NDecode, 50000, 0xA1)
+Set("\nEstressed - Hexadec.NDecode", hexadec.NDecode, 50000, 0xA1, true, true)
+Set("\nHexadec.SDecode", hexadec.SDecode, 50000, 1)
+Set("\nEstressed - Hexadec.SDecode", hexadec.SDecode, 50000, table_for_tests, true, true)
+Set("\nISHEX", hexadec.IsHex, 50000, 123)
+Set("\nEstressed - ISHEX", hexadec.IsHex, 50000, table_for_tests)
+Set("\nCLEAN", hexadec.Clean, 50000, 123)
+Set("\nEstressed - CLEAN", hexadec.Clean, 50000, table_for_tests, true, true)
+Set("\nDUMP", hexadec.Dump, 5, table_for_tests, "C")
+Set("\nCOLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+Set("\nEstressed - COLOR", hexadec.Color, 50000, table_for_tests, true, true, 16)
+
+print ("--- Lite ---")
+
+Set("\nLite.Code", hl.Code, 50000, "121 abc")
+Set("\nEstressed - Lite.Code", hl.Code, 50000, [[ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]])
+Set("\nLite.Decode", hl.Decode, 50000, {"1A"})
+Set("\nEstressed - Lite.Decode", hl.Decode, 50000, table_for_tests)
+Set("\nLite.CClean", hl.CClean, 50000)
+Set("\nEstressed - Lite.CClean", hl.CClean, 50000, true)
+Set("\nLite.Alert", hl.Alert, 50000, a)
+Set("\nLite.Rigid", hl.Rigid, 50000, 4)
+Set("\nNothing", a, 50000)
+Set("\nTonumber", b, 50000)
+
+-- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
+Benchmark!!!
+
+Hexadec.NCode           : 0.023 secs    10      {FF}
+
+Estressed - Hexadec.NCode: 0.053 secs   10      {0FF , FFF }
+
+SCODE                   : 0.040 secs    123     {31, 32, 33}
+
+Estressed - Hexadec.SCode: 0.073 secs   WXYZ    {057 , 058 , 059 , 05A }
+
+Extra - Hexadec.SCode   : 0.522 secs     !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 2A, 2B, 2C, 2D, 2E, 2F, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 3A, 3B, 3C, 3D, 3E, 3F, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 4A, 4B, 4C, 4D, 4E, 4F, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 5A, 5B, 5C, 5D, 5E, 5F, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 6A, 6B, 6C, 6D, 6E, 6F, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 7A, 7B, 7C, 7D, 7E}
+
+Hexadec.NDecode         : 0.003 secs    161     161
+
+Estressed - Hexadec.NDecode: 0.003 secs 161     161
+
+Hexadec.SDecode         : 0.005 secs    1       a
+
+Estressed - Hexadec.SDecode: 0.071 secs {01, 02, 03, 04}        table: 0000000000eedf30
+
+ISHEX                   : 0.003 secs    123     true
+
+Estressed - ISHEX       : 0.020 secs    {01, 02, 03, 04}        true
+
+CLEAN                   : 0.008 secs    123     7B
+
+Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+
+DUMP                    : 0.001 secs    {01, 02, 03, 04}
+
+COLOR                   : 0.030 secs    #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
+
+Estressed - COLOR       : 0.044 secs    {01, 02, 03, 04}        #01020304
+--- Lite ---
+
+Lite.Code               : 0.001 secs    121 abc 31323120616263
+
+Estressed - Lite.Code   : 0.002 secs     !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ 202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E
+
+Lite.Decode             : 0.002 secs    table: 0000000000eed930
+
+Estressed - Lite.Decode : 0.002 secs    {01, 02, 03, 04}
+
+Lite.CClean             : 0.013 secs    nil
+
+Estressed - Lite.CClean : 0.013 secs    true
+
+Lite.Alert              : 0.003 secs    function: 0000000000ec91d0
+
+Lite.Rigid              : 0.003 secs    4
+
+Nothing                 : 0.001 secs    nil
+
+Tonumber                : 0.005 secs    nil     15
+```
+</details>
 </details>
 
 <details>
-<summary><b>Lua Version: 5.5</b></summary><br>
+<summary>🌙 <b>Lua Version: 5.5</b></summary><br>
 <details>
-<summary><b>Version: 1.1.0</b></summary>
+<summary>---> <b>Version: 1.1.0</b></summary>
 
 ```lua
 local hexadec = require("hexadec")
@@ -379,6 +505,132 @@ DUMP                     : 0.001 secs   {C8}
 COLOR                    : 0.025 secs   #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
 Lite: CODE               : 0.025 secs   121 abc table: 0000000000eb65c0
 Lite: DECODE             : 0.020 secs   table: 0000000000eb5e40 A
+```
+</details>
+<details>
+<summary>---> <b>Version: 1.2.0</b></summary>
+
+```lua
+local hexadec = require("hexadec")(255) -- Start: The arg is the cache size for bits
+local hl = require("hexadec_lite")(255, 255, true) -- Cache size, ULTRA CACHE, Manutention Mode
+
+local a = function()
+    -- Literally nothing
+end
+local b = function(x) -- Benchmark with the default function for decoding
+    local tn = tonumber
+
+    return tn("F", 16)
+end
+local function Set(name, func, reps, ...) -- Benchmark function
+    local ini = os.clock()
+    for _ = 1, reps do
+        func(...)
+    end
+    local en = os.clock()
+    print(string.format("%-25s: %.3f secs", name, en - ini), ..., func(...))
+end
+
+local table_for_tests = hexadec.NCode(10, nil, nil, "1", "2", "3", "4")
+
+print ("Benchmark!!!")
+Set("\nHexadec.NCode", hexadec.NCode, 50000, 10, nil, nil, "255")
+Set("\nEstressed - Hexadec.NCode", hexadec.NCode, 50000, 10, 3, " ", "255", "4095")
+Set("\nSCODE", hexadec.SCode, 50000, "123")
+Set("\nEstressed - Hexadec.SCode", hexadec.SCode, 50000, "WXYZ", 3, " ")
+Set("\nExtra - Hexadec.SCode", hexadec.SCode, 50000, [[ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]])
+Set("\nHexadec.NDecode", hexadec.NDecode, 50000, 0xA1)
+Set("\nEstressed - Hexadec.NDecode", hexadec.NDecode, 50000, 0xA1, true, true)
+Set("\nHexadec.SDecode", hexadec.SDecode, 50000, 1)
+Set("\nEstressed - Hexadec.SDecode", hexadec.SDecode, 50000, table_for_tests, true, true)
+Set("\nISHEX", hexadec.IsHex, 50000, 123)
+Set("\nEstressed - ISHEX", hexadec.IsHex, 50000, table_for_tests)
+Set("\nCLEAN", hexadec.Clean, 50000, 123)
+Set("\nEstressed - CLEAN", hexadec.Clean, 50000, table_for_tests, true, true)
+Set("\nDUMP", hexadec.Dump, 5, table_for_tests, "C")
+Set("\nCOLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+Set("\nEstressed - COLOR", hexadec.Color, 50000, table_for_tests, true, true, 16)
+
+print ("--- Lite ---")
+
+Set("\nLite.Code", hl.Code, 50000, "121 abc")
+Set("\nEstressed - Lite.Code", hl.Code, 50000, [[ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~]])
+Set("\nLite.Decode", hl.Decode, 50000, {"1A"})
+Set("\nEstressed - Lite.Decode", hl.Decode, 50000, table_for_tests)
+Set("\nLite.CClean", hl.CClean, 50000)
+Set("\nEstressed - Lite.CClean", hl.CClean, 50000, true)
+Set("\nLite.Alert", hl.Alert, 50000, a)
+Set("\nLite.Rigid", hl.Rigid, 50000, 4)
+Set("\nNothing", a, 50000)
+Set("\nTonumber", b, 50000)
+
+-- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
+Benchmark!!!
+
+Hexadec.NCode           : 0.024 secs    10      {FF}
+
+Estressed - Hexadec.NCode: 0.052 secs   10      {0FF , FFF }
+
+SCODE                   : 0.028 secs    123     {31, 32, 33}
+
+Estressed - Hexadec.SCode: 0.068 secs   WXYZ    {057 , 058 , 059 , 05A }
+
+Extra - Hexadec.SCode   : 0.448 secs     !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ {20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 2A, 2B, 2C, 2D, 2E, 2F, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 3A, 3B, 3C, 3D, 3E, 3F, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 4A, 4B, 4C, 4D, 4E, 4F, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 5A, 5B, 5C, 5D, 5E, 5F, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 6A, 6B, 6C, 6D, 6E, 6F, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 7A, 7B, 7C, 7D, 7E}
+
+Hexadec.NDecode         : 0.002 secs    161     161
+
+Estressed - Hexadec.NDecode: 0.003 secs 161     161
+
+Hexadec.SDecode         : 0.006 secs    1       a
+
+Estressed - Hexadec.SDecode: 0.060 secs {01, 02, 03, 04}        table: 0000000000edb300
+
+ISHEX                   : 0.003 secs    123     true
+
+Estressed - ISHEX       : 0.021 secs    {01, 02, 03, 04}        true
+
+CLEAN                   : 0.010 secs    123     7B
+
+Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+0000001 | 01 | 02 | 03
+0000002 | 
+
+DUMP                    : 0.001 secs    {01, 02, 03, 04}
+
+COLOR                   : 0.026 secs    #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
+
+Estressed - COLOR       : 0.038 secs    {01, 02, 03, 04}        #01020304
+--- Lite ---
+
+Lite.Code               : 0.001 secs    121 abc 31323120616263
+
+Estressed - Lite.Code   : 0.002 secs     !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ 202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E
+
+Lite.Decode             : 0.002 secs    table: 0000000000edc7a0
+
+Estressed - Lite.Decode : 0.002 secs    {01, 02, 03, 04}
+
+Lite.CClean             : 0.010 secs    nil
+
+Estressed - Lite.CClean : 0.010 secs    true
+
+Lite.Alert              : 0.003 secs    function: 0000000000ed5360
+
+Lite.Rigid              : 0.003 secs    4
+
+Nothing                 : 0.000 secs    nil
+
+Tonumber                : 0.004 secs    nil     15
 ```
 </details>
 </details>
