@@ -580,20 +580,70 @@ Tonumber                : 0.004 secs    nil     15
 </details>
 </details>
 
-## Ranking of the faster functions:
-**Function Hexadec.NCode**
-**Function Hexadec.SCode**
-**Function Hexadec.NDecode**
-**Function Hexadec.SDecode**
-**Function Hexadec.IsHex**
-**Function Hexadec.Clean**
-**Function Hexadec.Dump** 
-**Function Hexadec.Color**
-**Function Hexadec.Code**
-**Function Hexadec.Decode**
-**Function Hexadec.CClean**
-**Function Hexadec.Alert**
-**Function Hexadec.Rigid**
+## Ranking of the faster version function:
+**Function Hexadec.NCode**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.SCode**:<br>
+1st - JIT (7 ms);
+2nd - Lua 5.5 (28 ms);
+3rd - Lua 5.4 (40 ms).
+
+**Function Hexadec.NDecode**:<br>
+1st - JIT (1 ms);
+2nd - Lua 5.5 (2 ms);
+3rd - Lua 5.4 and Lua 5.3 (3 ms).
+
+**Function Hexadec.SDecode**:<br>
+1st - JIT (2 ms);
+2nd - Lua 5.4 (5 ms);
+3rd - Lua 5.5 and Lua 5.3 (6 ms).
+
+**Function Hexadec.IsHex**:<br>
+1st - JIT (2 ms);
+2nd - Lua 5.5, Lua 5.4 and Lua 5.3 (3 ms).
+
+**Function Hexadec.Clean**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.Dump**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.Color**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.Code**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.Decode**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.CClean**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.Alert**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
+
+**Function Hexadec.Rigid**:<br>
+1st - JIT (8 ms);
+2nd - Lua 5.4 (23 ms);
+3rd - Lua 5.5 (24 ms).
 </details>
 
 <details>
