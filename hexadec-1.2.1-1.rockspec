@@ -1,8 +1,8 @@
 package = "hexadec"
-version = "1.2.0-1"
+version = "1.2.1-1"
 source = {
    url = "git+https://github.com/Joao-Feijao/Lua-Hexadecimal/",
-   tag = "v1.2.0-1"
+   tag = "v1.2.1-1"
 }
 description = {
    summary = "A module that can make conversion between hexadec, numbers and strings.",

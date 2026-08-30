@@ -114,7 +114,7 @@ return function(...)
             local vars1 = vars[1]
             local x = tonumber(vars1, base) or 0
 
-            if cond or x > bytelen - 1 then
+            if cond and x > bytelen - 1 then
                 local fmt = "%0"..min.."X"..sep
                 hex[1] = format(fmt, x)
             else
@@ -250,14 +250,20 @@ return function(...)
         local self = self
 
         local type = type
-
-        if type(self) == "string" then
+        local tys = type(self)
+        if tys == "string" then
             local caps = caps
             local char = string.char
             local tonumber = tonumber
             local cap = (caps and 64) or 96
 
             return char(tonumber(self, 16) + cap)
+        elseif tys == "number" then
+            local caps = caps
+            local char = string.char
+            local cap = (caps and 64) or 96
+
+            return char(self + cap)
         end
 
         local getmetatable = getmetatable

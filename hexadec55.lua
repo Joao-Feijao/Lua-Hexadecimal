@@ -124,7 +124,7 @@ return function(...)
             local vars1 <const> = vars[1]
             local x = tonumber(vars1, base) or 0
 
-            if cond or x > bytelen - 1 then
+            if cond and x > bytelen - 1 then
                 local fmt <const> = "%0"..min.."X"..sep
                 hex[1] = format(fmt, x)
             else
@@ -260,14 +260,20 @@ return function(...)
         local self <const> = self
 
         local type <const> = type
-
-        if type(self) == "string" then
+        local tys <const> = type(self)
+        if tys == "string" then
             local caps <const> = caps
             local char <const> = string.char
             local tonumber <const> = tonumber
             local cap <const> = (caps and 64) or 96
 
             return char(tonumber(self, 16) + cap)
+        elseif tys == "number" then
+            local caps <const> = caps
+            local char <const> = string.char
+            local cap <const> = (caps and 64) or 96
+
+            return char(self + cap)
         end
 
         local getmetatable <const> = getmetatable
