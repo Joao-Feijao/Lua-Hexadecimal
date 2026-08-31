@@ -248,6 +248,10 @@ Lite.Decode             : 0.003 secs    table: 0000000000f1a930
 
 Estressed - Lite.Decode : 0.002 secs    {01, 02, 03, 04}
 
+Lite.CClean : nan (not measured)
+
+Estressed - Lite.CClean : nan (not measured)
+
 Lite.Alert              : 0.004 secs    function: 0000000000720b80
 
 Lite.Rigid              : 0.004 secs    4
@@ -761,7 +765,7 @@ Args:<br>
 
 Tips:<br>
 *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-*- Caps == true uses lowercase and not Caps uses uppercase*;<br>
+*- Caps == true uses uppercase and not Caps uses lowercase*;<br>
 *- Secure makes the code slightly slower, but may worth it*.
 
 Example:<br>
@@ -965,10 +969,10 @@ print(hexafloat) -- 1.0
 Under construction...
 </details>
 <details>
-<summary><b>v1.2.1-1 (under construction)</b></summary>
+<summary><b>v1.2.1-1</b></summary>
 
 **FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string | number, caps: boolean, secure: boolean):**<br>
-Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+Description: A function that decodes a hexadec type, a string or a number in hexadecimal to a table or string with the corresponding alphabet letters, with a optional secure mode.
 
 Return:<br>
 *Self -> string - String*;<br>
