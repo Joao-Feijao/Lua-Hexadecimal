@@ -894,7 +894,7 @@ Under construction...
 4 - Added a new feature for Hexadec.SDecode for the self arg, now with number support.
 </details>
 <details>
-<summary><b>v1.2.0-1</b></summary>
+<summary><b>v1.2.0-1 - Ultra compatibility</b></summary>
 1 - Ultra Cache otimization for Lite version, featuring Randomized LRU and velocity compared to "Hex" Lua module;<br>
 2 - Added new functions to the Lite version:<br>
 *- Alert -> Can call a function every time the Ultra Cache is used;*<br>
