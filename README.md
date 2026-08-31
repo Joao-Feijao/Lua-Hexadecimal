@@ -965,7 +965,7 @@ print(hexafloat) -- 1.0
 Under construction...
 </details>
 <details>
-<summary><b>v1.2.1-1</b></summary>
+<summary><b>v1.2.1-1 (under construction)</b></summary>
 
 **FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string | number, caps: boolean, secure: boolean):**<br>
 Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
