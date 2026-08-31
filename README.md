@@ -887,7 +887,15 @@ Under construction...
 <details>
 <summary>📜 <b>Change log</b></summary>
 <details>
-<summary>⌚ <b>v1.1.1-1</b> - Patch <b>(NEWER RELEASE)</b></summary>
+<summary>⌚ <b>v1.2.1-1</b> - Patch <b>(NEWER RELEASE)</b></summary>
+
+</details>
+<details>
+<summary><b>v1.2.0-1</b></summary>
+
+</details>
+<details>
+<summary><b>v1.1.1-1</b> - Patch</summary>
 1 - Corrected Hexadec_lite.Decode;<br>
 2 - Brings a better general GitHub folder, with a corrected "Benchmark.lua"
 </details>
