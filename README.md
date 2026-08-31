@@ -888,11 +888,25 @@ Under construction...
 <summary>📜 <b>Change log</b></summary>
 <details>
 <summary>⌚ <b>v1.2.1-1</b> - Patch <b>(NEWER RELEASE)</b></summary>
-
+1 - Fixed hexadec54.lua (it's a somewhat specific bug);<br>
+2 - Upgraded the Benchmark.lua (it was necessary!);<br>
+3 - Fixed minor bugs, like the "attempt to concatenate a nil value (local 'sep')";<br>
+4 - Added a new feature for Hexadec.SDecode for the self arg, now with number support.
 </details>
 <details>
 <summary><b>v1.2.0-1</b></summary>
-
+1 - Ultra Cache otimization for Lite version, featuring Randomized LRU and velocity compared to "Hex" Lua module;<br>
+2 - Added new functions to the Lite version:<br>
+*- Alert -> Can call a function every time the Ultra Cache is used;*<br>
+*- Rigid -> Can define a limit for Ultra Cache, preventing RAM overflow;*<br>
+*- They are** deactivated by default**.*<br>
+3 - Added new otimizations and centralized modules for the main Lua versions:<br>
+*- Lua 5.5 (already in last update, now with extra performance);*<br>
+*- Lua 5.4;*<br>
+*- Lua 5.3;*<br>
+*- LuaJIT;*<br>
+*- This excludes Lua 5.2 and pure Lua 5.1.*<br>
+4 - Added a new use for Hexadec.SDecode, now able to decode numeric strings directly to ASCII + 64 or 96 (1-26 will show the alphabet).
 </details>
 <details>
 <summary><b>v1.1.1-1</b> - Patch</summary>
