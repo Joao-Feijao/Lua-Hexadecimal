@@ -606,44 +606,43 @@ Tonumber                : 0.004 secs    nil     15
 2nd - Lua 5.5, Lua 5.4 and Lua 5.3 (3 ms).
 
 **Function Hexadec.Clean**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+1st - JIT (3 ms);
+2nd - Lua 5.4 (8 ms);
+3rd - Lua 5.3 (9 ms).
 
 **Function Hexadec.Dump**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+1st - JIT (0 ms);
+2nd - Lua 5.5, Lua 5.4 and Lua 5.3 (1 ms).
 
 **Function Hexadec.Color**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+1st - JIT (11 ms);
+2nd - Lua 5.5 (26 ms);
+3rd - Lua 5.4 (30 ms).
 
-**Function Hexadec.Code**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+**Function Lite.Code**:<br>
+1st - JIT (1 ms);
+2nd - Lua 5.5 and Lua 5.4 (2 ms);
+3rd - Lua 5.3 (3 ms).
 
-**Function Hexadec.Decode**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+**Function Lite.Decode**:<br>
+1st - JIT (1 ms);
+2nd - Lua 5.5 and Lua 5.4 (2 ms);
+3rd - Lua 5.3 (3 ms).
 
-**Function Hexadec.CClean**:<br>
+**Function Lite.CClean**:<br>
 1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+2nd - Lua 5.5 (10 ms);
+3rd - Lua 5.4 (13 ms).
 
-**Function Hexadec.Alert**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+**Function Lite.Alert**:<br>
+1st - JIT (0 ms);
+2nd - Lua 5.5 and Lua 5.4 (3 ms);
+3rd - Lua 5.3 (4 ms).
 
-**Function Hexadec.Rigid**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
-3rd - Lua 5.5 (24 ms).
+**Function Lite.Rigid**:<br>
+1st - JIT (0 ms);
+2nd - Lua 5.5 and Lua 5.4 (3 ms);
+3rd - Lua 5.3 (4 ms).
 </details>
 
 <details>
