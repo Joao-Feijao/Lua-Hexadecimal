@@ -657,7 +657,9 @@ Tonumber                : 0.004 secs    nil     15
 <summary><b>Normal version</b></summary>
 
 <details>
+
 <summary><b>v1.0.0-1</b></summary>
+
 **FUNCTION: Setup(...):**<br>
 Description: The setup function mentioned in the Starting section.
 
@@ -877,6 +879,7 @@ print(hexafloat) -- 1.0
 </details>
 <details>
 <summary><b>v1.1.0-1</b></summary>
+
 **FUNCTION (METHOD): Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
 Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.<br>
 
@@ -964,6 +967,7 @@ Under construction...
 
 <details>
 <summary>📜 <b>Change log</b></summary>
+
 <details>
 <summary>⌚ <b>v1.2.1-1</b> - Patch <b>(NEWER RELEASE)</b></summary>
 1 - Fixed hexadec54.lua (it's a somewhat specific bug);<br>
