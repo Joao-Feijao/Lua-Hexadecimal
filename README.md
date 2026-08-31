@@ -653,6 +653,7 @@ Tonumber                : 0.004 secs    nil     15
 
 <details>
 <summary>🔤 <b>Documentation</b></summary>
+
 <details>
 <summary><b>Normal version</b></summary>
 
@@ -939,7 +940,7 @@ Args:<br>
 *- Self*: Can be a hexadec type or a string;<br>
 *- Alpha*: Defines if the self have a alpha channel;<br>
 *- Float*: Defines if the return should be in 0-1 or brute RGB(A);<br>
-*- Bits:* Defines each color channel (default is 255, RRGGBBAA).
+*- Bits:* Defines each color channel (default is 256, RRGGBBAA).
 
 Tips:<br>
 *- Strings and hexadec types can't start with '#'*;<br>
@@ -956,6 +957,39 @@ print(hexaint) -- 255
 
 local hexafloat = Hexadec.Color("#FFFFFFFF", true, true, 255) -- Doesn't work anymore for extra otimization
 print(hexafloat) -- 1.0
+```
+</details>
+
+<details>
+<summary><b>v1.2.0-1</b></summary>
+Under construction...
+</details>
+<details>
+<summary><b>v1.2.1-1</b></summary>
+
+**FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string | number, caps: boolean, secure: boolean):**<br>
+Description: A function that decodes a hexadec type or a string in hexadecimal to a table or number, with a optional secure mode.
+
+Return:<br>
+*Self -> string - String*;<br>
+*Self -> number - String*;<br>
+*Self -> hexadec type - Table*.
+
+Args:<br>
+*- Self*: Can be a hexadec type, a string or a number;<br>
+*- Caps*: Defines if the self will return uppercase or lowercase letters for the conversion;<br>
+*- Secure*: Uses Hexadec.IsHex before trying the conversion.
+
+Tips:<br>
+*- Strings and numbers (even better) are converted with better performance (prefer using strings or numbers than hexadec types with only 1 index)*;<br>
+*- Caps == true uses uppercase and not Caps uses lowercase*;<br>
+*- Secure makes the code slightly slower, but may worth it*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(255)
+local hexa = Hexadec.SDecode(1, true) -- Will be otimized
+print(hexa[1]) -- A
 ```
 </details>
 </details>
