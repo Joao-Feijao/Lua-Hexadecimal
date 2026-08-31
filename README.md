@@ -580,69 +580,75 @@ Tonumber                : 0.004 secs    nil     15
 </details>
 </details>
 
-## Ranking of the faster version function:
+## Ranking of the functions speed in each Lua version (otimized mode):
 **Function Hexadec.NCode**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.4 (23 ms);
+1st - JIT (8 ms);<br>
+2nd - Lua 5.4 (23 ms);<br>
 3rd - Lua 5.5 (24 ms).
 
 **Function Hexadec.SCode**:<br>
-1st - JIT (7 ms);
-2nd - Lua 5.5 (28 ms);
+1st - JIT (7 ms);<br>
+2nd - Lua 5.5 (28 ms);<br>
 3rd - Lua 5.4 (40 ms).
 
 **Function Hexadec.NDecode**:<br>
-1st - JIT (1 ms);
-2nd - Lua 5.5 (2 ms);
+1st - JIT (1 ms);<br>
+2nd - Lua 5.5 (2 ms);<br>
 3rd - Lua 5.4 and Lua 5.3 (3 ms).
 
 **Function Hexadec.SDecode**:<br>
-1st - JIT (2 ms);
-2nd - Lua 5.4 (5 ms);
+1st - JIT (2 ms);<br>
+2nd - Lua 5.4 (5 ms);<br>
 3rd - Lua 5.5 and Lua 5.3 (6 ms).
 
 **Function Hexadec.IsHex**:<br>
-1st - JIT (2 ms);
+1st - JIT (2 ms);<br>
 2nd - Lua 5.5, Lua 5.4 and Lua 5.3 (3 ms).
 
 **Function Hexadec.Clean**:<br>
-1st - JIT (3 ms);
-2nd - Lua 5.4 (8 ms);
+1st - JIT (3 ms);<br>
+2nd - Lua 5.4 (8 ms);<br>
 3rd - Lua 5.3 (9 ms).
 
 **Function Hexadec.Dump**:<br>
-1st - JIT (0 ms);
+1st - JIT (0 ms);<br>
 2nd - Lua 5.5, Lua 5.4 and Lua 5.3 (1 ms).
 
 **Function Hexadec.Color**:<br>
-1st - JIT (11 ms);
-2nd - Lua 5.5 (26 ms);
+1st - JIT (11 ms);<br>
+2nd - Lua 5.5 (26 ms);<br>
 3rd - Lua 5.4 (30 ms).
 
 **Function Lite.Code**:<br>
-1st - JIT (1 ms);
-2nd - Lua 5.5 and Lua 5.4 (2 ms);
+1st - JIT (1 ms);<br>
+2nd - Lua 5.5 and Lua 5.4 (2 ms);<br>
 3rd - Lua 5.3 (3 ms).
 
 **Function Lite.Decode**:<br>
-1st - JIT (1 ms);
-2nd - Lua 5.5 and Lua 5.4 (2 ms);
+1st - JIT (1 ms);<br>
+2nd - Lua 5.5 and Lua 5.4 (2 ms);<br>
 3rd - Lua 5.3 (3 ms).
 
 **Function Lite.CClean**:<br>
-1st - JIT (8 ms);
-2nd - Lua 5.5 (10 ms);
+1st - JIT (8 ms);<br>
+2nd - Lua 5.5 (10 ms);<br>
 3rd - Lua 5.4 (13 ms).
 
 **Function Lite.Alert**:<br>
-1st - JIT (0 ms);
-2nd - Lua 5.5 and Lua 5.4 (3 ms);
+1st - JIT (0 ms);<br>
+2nd - Lua 5.5 and Lua 5.4 (3 ms);<br>
 3rd - Lua 5.3 (4 ms).
 
 **Function Lite.Rigid**:<br>
-1st - JIT (0 ms);
-2nd - Lua 5.5 and Lua 5.4 (3 ms);
+1st - JIT (0 ms);<br>
+2nd - Lua 5.5 and Lua 5.4 (3 ms);<br>
 3rd - Lua 5.3 (4 ms).
+
+## Better Lua versions:
+1st - JIT (unbeatable);<br>
+2nd - Lua 5.5;<br>
+3rd - Lua 5.4;<br>
+4th - Lua 5.3.
 </details>
 
 <details>
