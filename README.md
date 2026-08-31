@@ -655,7 +655,9 @@ Tonumber                : 0.004 secs    nil     15
 <summary>🔤 <b>Documentation</b></summary>
 <details>
 <summary><b>Normal version</b></summary>
-  
+
+<details>
+<summary><b>v1.0.0-1</b></summary>
 **FUNCTION: Setup(...):**<br>
 Description: The setup function mentioned in the Starting section.
 
@@ -720,30 +722,26 @@ local hexa = Hexadec.SCode("255", nil, nil) -- Will be optimized
 print(hexa) -- {32, 35, 35}
 ```
 
-**FUNCTION (METHOD): Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
-Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.<br>
+**FUNCTION (METHOD): Hexadec.NDecode(self: hexadec type | number | string, secure: boolean):**<br>
+Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table, with a optional secure mode.<br>
 
 Return:<br>
 *Self -> number - Number*;<br>
 *Self -> string - Number*;<br>
-*<Self -> hexadec type>*<br>
-*Str ~= true - Table with number values*;<br>
-*Str == true - String*.
+*Self -> hexadec type - Table with number values*.
 
 Args:<br>
 *- Self*: Can be a hexadec type, a string or a number;<br>
-*- Str*: Defines if the return is a table or a string (ONLY AVAILABLE ON v1.1.0+);<br>
 *- Secure*: Uses Hexadec.IsHex before trying the conversion.
 
 Tips:<br>
 *- Numbers and strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-*- Secure makes the code slightly slower, but may worth it*;<br>
-*- Str makes the code slightly slower, but may worth it*.
+*- Secure makes the code slightly slower, but may worth it*.
 
 Example:<br>
 ```lua
 local Hexadec = require("hexadec")(255)
-local hexa = Hexadec.NDecode("FF", false, false) -- Will be optimized
+local hexa = Hexadec.NDecode("FF", false) -- Will be optimized
 print(hexa) -- 255
 ```
 **FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
@@ -779,7 +777,7 @@ Return:<br>
 
 Args:<br>
 *- Self*: Can be a hexadec type, a string or a number;<br>
-*- Spaces*: Activates a mode that permits spaces in the self argument (ONLY AVAILABLE ON v1.0.0).
+*- Spaces*: Activates a mode that permits spaces in the self argument.
 
 Tips:<br>
 *- Every number is a hexadecimal, including integers and floats*;<br>
@@ -863,20 +861,100 @@ Args:<br>
 
 Tips:<br>
 *- Strings are converted with better performance and doesn't require "#" in its start*;<br>
-*- If self -> number, the return will be a hexadecimal string with its value*;<br>
-*- Spaces == true keeps spaces and not spaces removes them*;<br>
-*- Str can make the code slightly slower, but may worth it*;<br>
-*- Str is only used when self -> hexadec type, so you generally can avoid it*.
+*- Alpha will always be maxed out if deactivated*;<br>
+*- Less bits equals to more speed (always use powers of 16!)*;<br>
+*- Alpha and float can make the code slightly slower, but may worth it*.
 
 Example:<br>
 ```lua
 local Hexadec = require("hexadec")(255)
-local hexaint = Hexadec.Color("FFFFFFFF", true, false, 255) -- Will be optimized
+local hexaint = Hexadec.Color("FFFFFFFF", true, false, 255) -- Better than hexadec type
 print(hexaint) -- 255
 
-local hexafloat = Hexadec.Color("FFFFFFFF", true, true, 255) -- Will be optimized
+local hexafloat = Hexadec.Color("#FFFFFFFF", true, true, 255) -- Also works
 print(hexafloat) -- 1.0
 ```
+</details>
+<details>
+<summary><b>v1.1.0-1</b></summary>
+**FUNCTION (METHOD): Hexadec.NDecode(self: hexadec type | number | string, str: boolean, secure: boolean):**<br>
+Description: A function that decodes a hexadec type, number or a string in hexadecimal to a table or string, with a optional secure mode.<br>
+
+Return:<br>
+*Self -> number - Number*;<br>
+*Self -> string - Number*;<br>
+*<Self -> hexadec type>*<br>
+*Str ~= true - Table with number values*;<br>
+*Str == true - String*.
+
+Args:<br>
+*- Self*: Can be a hexadec type, a string or a number;<br>
+*- Str*: Defines if the return is a table or a string;<br>
+*- Secure*: Uses Hexadec.IsHex before trying the conversion.
+
+Tips:<br>
+*- Numbers and strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+*- Secure makes the code slightly slower, but may worth it*;<br>
+*- Str makes the code slightly slower, but may worth it*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(255)
+local hexa = Hexadec.NDecode("FF", false, false) -- Will be optimized
+print(hexa) -- 255
+```
+**FUNCTION (METHOD): Hexadec.IsHex(self: hexadec type | string | number):**<br>
+Description: A function that checks if self is a valid hexadecimal or not (can ignore spaces).
+
+Return:<br>
+*Self -> number - True*;<br>
+*Self -> string - Boolean*;<br>
+*Self -> hexadec type - Boolean*.
+
+Args:<br>
+*- Self*: Can be a hexadec type, a string or a number.
+
+Tips:<br>
+*- Every number is a hexadecimal, including integers and floats*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(255)
+local hexa = Hexadec.IsHex("FF") -- Will be optimized
+print(hexa) -- true
+```
+**FUNCTION (METHOD): Hexadec.Color(self: hexadec type | string, alpha: boolean, float: boolean, bits: number):**<br>
+Description: A function that creates a RGB or RGBA using a hexadec type or a string.
+
+Return:<br>
+*Self -> hexadec type - String*;<br>
+*<Self -> string:>*<br>
+*Float == true - float, float, float, float*;<br>
+*Float ~= true - number, number, number, number*.
+
+Args:<br>
+*- Self*: Can be a hexadec type or a string;<br>
+*- Alpha*: Defines if the self have a alpha channel;<br>
+*- Float*: Defines if the return should be in 0-1 or brute RGB(A);<br>
+*- Bits:* Defines each color channel (default is 255, RRGGBBAA).
+
+Tips:<br>
+*- Strings and hexadec types can't start with '#'*;<br>
+*- Strings are generally way less expensive than hexadec type*;<br>
+*- Alpha will always be maxed out if deactivated*;<br>
+*- Less bits equals to more speed (always use powers of 16!)*;<br>
+*- Alpha and float can make the code slightly slower, but may worth it*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(255)
+local hexaint = Hexadec.Color("FFFFFFFF", true, false, 255) -- Better than hexadec type
+print(hexaint) -- 255
+
+local hexafloat = Hexadec.Color("#FFFFFFFF", true, true, 255) -- Doesn't work anymore for extra otimization
+print(hexafloat) -- 1.0
+```
+</details>
 </details>
 <details>
 <summary><b>Lite version</b></summary>
