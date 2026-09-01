@@ -1021,7 +1021,14 @@ print(hexa) -- A
 </details>
 <details>
 <summary><b>Lite version</b></summary>
+<details>
+<summary><b>v1.1.0-1</b></summary>
 Under construction...
+</details>
+<details>
+<summary><b>v1.2.0-1</b></summary>
+Under construction...
+</details>
 </details>
 </details>
 
