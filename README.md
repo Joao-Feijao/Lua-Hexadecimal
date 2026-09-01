@@ -765,14 +765,14 @@ Args:<br>
 
 Tips:<br>
 *- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
-*- Caps == true uses uppercase and not Caps uses lowercase*;<br>
+*- Caps == true uses uppercase and not Caps uses lowercase (only works with self -> hexadec type)*;<br>
 *- Secure makes the code slightly slower, but may worth it*.
 
 Example:<br>
 ```lua
 local Hexadec = require("hexadec")(255)
-local hexa = Hexadec.SDecode({1, 1, 1}, false, false)
-print(hexa[1]) -- A
+local hexa = Hexadec.SDecode("F")
+print(hexa) -- 15
 ```
 **FUNCTION (METHOD): Hexadec.IsHex(self: hexadec type | string | number, spaces: boolean):**<br>
 Description: A function that checks if self is a valid hexadecimal or not (can ignore spaces).
@@ -966,7 +966,29 @@ print(hexafloat) -- 1.0
 
 <details>
 <summary><b>v1.2.0-1</b></summary>
-Under construction...
+**FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
+Description: A function that decodes a hexadec type or a string in hexadecimal to a table or string with alphabet letters (1-26) and others, with a optional secure mode.
+
+Return:<br>
+*Self -> string - String*;<br>
+*Self -> hexadec type - Table*.
+
+Args:<br>
+*- Self*: Can be a hexadec type or a string;<br>
+*- Caps*: Defines if the self uses uppercase or lowercase letters for the conversion;<br>
+*- Secure*: Uses Hexadec.IsHex before trying the conversion.
+
+Tips:<br>
+*- Strings are converted with better performance (prefer using strings than hexadec types with only 1 index)*;<br>
+*- Caps == true uses uppercase and not Caps uses lowercase (only works with self -> hexadec type)*;<br>
+*- Secure makes the code slightly slower, but may worth it*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(255)
+local hexa = Hexadec.SDecode("1", false, false)
+print(hexa) -- A
+```
 </details>
 <details>
 <summary><b>v1.2.1-1</b></summary>
@@ -986,14 +1008,14 @@ Args:<br>
 
 Tips:<br>
 *- Strings and numbers (even better) are converted with better performance (prefer using strings or numbers than hexadec types with only 1 index)*;<br>
-*- Caps == true uses uppercase and not Caps uses lowercase*;<br>
+*- Caps == true uses uppercase and not Caps uses lowercase (only works with self -> hexadec type)*;<br>
 *- Secure makes the code slightly slower, but may worth it*.
 
 Example:<br>
 ```lua
 local Hexadec = require("hexadec")(255)
 local hexa = Hexadec.SDecode(1, true) -- Will be otimized
-print(hexa[1]) -- A
+print(hexa) -- A
 ```
 </details>
 </details>
@@ -1019,7 +1041,7 @@ Under construction...
 2 - Added new functions to the Lite version:<br>
 *- Alert -> Can call a function every time the Ultra Cache is used;*<br>
 *- Rigid -> Can define a limit for Ultra Cache, preventing RAM overflow;*<br>
-*- They are** deactivated by default**.*<br>
+*- They are **deactivated by default**.*<br>
 3 - Added new otimizations and centralized modules for the main Lua versions:<br>
 *- Lua 5.5 (already in last update, now with extra performance);*<br>
 *- Lua 5.4;*<br>
