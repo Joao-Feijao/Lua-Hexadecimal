@@ -14,8 +14,8 @@ $ luarocks install hexadec
 
 Now, the next step is loading the package:
 ```lua
-local hexset = require("hexadec") -- Normal version
-local hexsetlite = require("hexadec_lite") -- Lite version, available on v1.1.0+
+local hexset = require("hexadec")(255) -- Normal version
+local hexsetlite = require("hexadec_lite")(255) -- Lite version, available on v1.1.0+
 
 print(type(hexset), type(hexsetlite)) -- function function -- They both return a setup function
 hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
@@ -966,6 +966,7 @@ print(hexafloat) -- 1.0
 
 <details>
 <summary><b>v1.2.0-1</b></summary>
+
 **FUNCTION (METHOD): Hexadec.SDecode(self: hexadec type | string, caps: boolean, secure: boolean):**<br>
 Description: A function that decodes a hexadec type or a string in hexadecimal to a table or string with alphabet letters (1-26) and others, with a optional secure mode.
 
@@ -1045,7 +1046,7 @@ Under construction...
 <details>
 <summary><b>v1.2.0-1 - Ultra compatibility</b></summary>
 1 - Ultra Cache otimization for Lite version, featuring Randomized LRU and velocity compared to "Hex" Lua module;<br>
-2 - Added new functions to the Lite version:<br>
+2 - Added a Manutention Mode for Lite version with new functions:<br>
 *- Alert -> Can call a function every time the Ultra Cache is used;*<br>
 *- Rigid -> Can define a limit for Ultra Cache, preventing RAM overflow;*<br>
 *- They are **deactivated by default**.*<br>
