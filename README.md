@@ -1024,7 +1024,60 @@ print(hexa) -- A
 <summary><b>Lite version</b></summary>
 <details>
 <summary><b>v1.1.0-1</b></summary>
-Under construction...
+
+**FUNCTION: Setup(...):**<br>
+Description: The setup function mentioned in the Starting section.<br>
+OBS: Only available on Lua 5.5!
+
+Return:<br>
+*- Hexadec Module or SECRET MESSAGE*.
+
+Args:<br>
+*- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")
+print (Lite) -- function: 0x... -- Setup function
+print (Lite()) -- SECRET MESSAGE -- No arguments
+print (Lite(255)) -- table: 0x... (Hexadec Module) -- With cache size
+```
+**FUNCTION: Lite.Code(str: string):**<br>
+Description: Lite counterpart to Hexadec.SCode, inspired by encode, from "hex" (by <b>mah0x211</b>).
+
+Return:<br>
+*- Table with string values*.
+
+Args:<br>
+*- Str*: Can only be a string.
+
+Tips:<br>
+*- This function is way faster than Hexadec.SCode, but return a normal table instead of a hexadec type*.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")(255)
+local hexa = Lite.Code("123")
+print(hexa) -- table: 0x...
+print (hexa[1]) -- 31
+```
+**FUNCTION: Setup(...):**<br>
+Description: The setup function mentioned in the Starting section.<br>
+OBS: Only available on Lua 5.5!
+
+Return:<br>
+*- Hexadec Module or SECRET MESSAGE*.
+
+Args:<br>
+*- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")
+print (Lite) -- function: 0x... -- Setup function
+print (Lite()) -- SECRET MESSAGE -- No arguments
+print (Lite(255)) -- table: 0x... (Hexadec Module) -- With cache size
+```
 </details>
 <details>
 <summary><b>v1.2.0-1</b></summary>
