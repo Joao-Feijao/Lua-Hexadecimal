@@ -830,7 +830,7 @@ print(hexa) -- FF
 **FUNCTION (METHOD): Hexadec.Dump(self: hexadec type, mode: string, inter: table | number, line: number):**<br>
 Description: A function that generates a hexdump in the terminal.
 
-Return: *nil*
+Return: *nil*.
 
 Args:<br>
 *- Self*: Must be a hexadec type;<br>
@@ -1087,7 +1087,7 @@ print(hexa) -- 123
 ```
 </details>
 <details>
-<summary><b>v1.2.0-1</b></summary>
+<summary><b>v1.2.0-1 (UNDER CONSTRUCTION...)</b></summary>
 
 **FUNCTION: Setup(...):**<br>
 Description: The setup function mentioned in the Starting section.<br>
@@ -1109,6 +1109,83 @@ print (Lite) -- function: 0x... -- Setup function
 print (Lite()) -- SECRET MESSAGE -- No arguments
 print (Lite(255)) -- table: 0x... (Lite Hexadec Module) -- With cache size
 print (Lite(255, 255, true)) -- table: 0x... (Hexadec Module) -- With cache size | Ultra Cache size | Manutention Mode
+```
+**FUNCTION: Lite.CClean(memory: boolean):**<br>
+Description: Cleans the Ultra Cache.<br>
+OBS: Only activated if Ultra Cache is enabled.
+
+Return: *nil*.
+
+Args:<br>
+*- Memory*: Activates a mode that doesn't need internal realloc (ONLY IN LuaJIT VERSION).
+
+Tips:<br>
+*- You may think this is not useful at all... you are right, but it has a better performance than a normal pairs*;<br>
+*- Memory uses table.clear from LuaJIT to prevent new realloc calls*.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")(255)
+local hexa = Lite.CClean()
+print(hexa) -- nil
+
+local func = function(x)
+    for k in pairs(x) do
+        x[k] = nil
+    end
+end
+Set("PAIRS", func, 50000, hl.UCH)
+Set("CClean", hl.CClean, 50000, hl.UCH)
+
+-- Output:
+
+nil
+PAIRS                    : 0.013 secs   table: 0000000000e749a0
+CClean                   : 0.012 secs   table: 0000000000e749a0
+
+-- Using LuaJIT with memory:
+
+PAIRS                    : 0.009 secs   table: 0x015c7bf9d720
+CClean                   : 0.007 secs   table: 0x015c7bf9d720
+```
+**FUNCTION: Lite.Alert(func: function):**<br>
+Description: Calls a function every time Ultra Cache gets a new index (__newindex).<br>
+OBS: Only activated if Manutention Mode is enabled.
+
+Return: *nil*.
+
+Args:<br>
+*- Func*: Function that will be called as func(index, value).
+
+Tips:<br>
+*- __newindex metamethod is very expensive, so you might prefer this as a debug feature*.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")(255)
+local hexa = Lite.Alert(function(k, v)
+    print (k, v)
+end)
+print(hexa) -- nil
+```
+**FUNCTION: Lite.Rigid(tab: table):**<br>
+Description: Lite counterpart to Hexadec.NDecode, inspired by decode, from "hex" (by <b>mah0x211</b>).<br>
+OBS: Only works on Lua 5.5 because of a bug (patched in v1.1.1-1).
+
+Return:<br>
+*- String*.
+
+Args:<br>
+*- Tab*: Table with string values.
+
+Tips:<br>
+*- The string values are interpreted as ASCII, so the max is 255*.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")(255)
+local hexa = Lite.Decode({"31", "32", "33"})
+print(hexa) -- 123
 ```
 </details>
 </details>
