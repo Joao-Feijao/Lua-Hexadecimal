@@ -1167,25 +1167,36 @@ local hexa = Lite.Alert(function(k, v)
     print (k, v)
 end)
 print(hexa) -- nil
-```
-**FUNCTION: Lite.Rigid(tab: table):**<br>
-Description: Lite counterpart to Hexadec.NDecode, inspired by decode, from "hex" (by <b>mah0x211</b>).<br>
-OBS: Only works on Lua 5.5 because of a bug (patched in v1.1.1-1).
 
-Return:<br>
-*- String*.
+local tab = Lite.Code("123")
+123     313233 -- Alert
+313233  123 -- Alert
+print(tab) -- table: 0x...
+```
+**FUNCTION: Lite.Rigid(num: number | string):**<br>
+Description: Defines a limit to the Ultra Cache, preventing memory overflow.<br>
+OBS: Only activated if Manutention Mode is enabled.
+
+Return: *nil*.
 
 Args:<br>
-*- Tab*: Table with string values.
+*- Num*: Can be a number or a string.
 
 Tips:<br>
-*- The string values are interpreted as ASCII, so the max is 255*.
+*- If num is a number, the new limit will be num. But, if num == "nil" (string) or none of these, then the limit will be deactivated or the limit will be the Ultra Cache initial size, respectively*.
 
 Example:<br>
 ```lua
 local Lite = require("hexadec_lite")(255)
-local hexa = Lite.Decode({"31", "32", "33"})
-print(hexa) -- 123
+local hexa = Lite.Rigid(1)
+print(hexa) -- nil
+
+local tab = Lite.Code("123")
+print(tab) -- table: 0x...
+
+for k, v in pairs(Lite.UCH) do
+  print (k, v) -- Will print only one value, randomized by LRU
+end
 ```
 </details>
 </details>
