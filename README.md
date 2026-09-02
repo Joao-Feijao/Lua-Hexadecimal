@@ -1044,7 +1044,7 @@ Example:<br>
 local Lite = require("hexadec_lite")
 print (Lite) -- function: 0x... -- Setup function
 print (Lite()) -- SECRET MESSAGE -- No arguments
-print (Lite(255)) -- table: 0x... (Hexadec Module) -- With cache size
+print (Lite(255)) -- table: 0x... (Lite Hexadec Module) -- With cache size
 ```
 **FUNCTION: Lite.Code(str: string):**<br>
 Description: Lite counterpart to Hexadec.SCode, inspired by encode, from "hex" (by <b>mah0x211</b>).
@@ -1067,7 +1067,8 @@ print(hexa) -- table: 0x...
 print (hexa[1]) -- 31
 ```
 **FUNCTION: Lite.Decode(tab: table):**<br>
-Description: Lite counterpart to Hexadec.NDecode, inspired by decode, from "hex" (by <b>mah0x211</b>).
+Description: Lite counterpart to Hexadec.NDecode, inspired by decode, from "hex" (by <b>mah0x211</b>).<br>
+OBS: Only works on Lua 5.5 because of a bug (patched in v1.1.1-1).
 
 Return:<br>
 *- String*.
@@ -1087,7 +1088,28 @@ print(hexa) -- 123
 </details>
 <details>
 <summary><b>v1.2.0-1</b></summary>
-Under construction...
+
+**FUNCTION: Setup(...):**<br>
+Description: The setup function mentioned in the Starting section.<br>
+OBS: Only available on Lua 5.5!
+
+Return:<br>
+*No arguments - SECRET MESSAGE*;<br>
+*At least one argument - Lite Hexadec module*.
+
+Args:<br>
+*- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size;<br>
+*- 2nd argument (or Ultra Cache size)*: Number that defines your Ultra Cache size (and also enables it);<br>
+*- 3rd argument (or Manutention Mode)*: Boolean that activates MM.
+
+Example:<br>
+```lua
+local Lite = require("hexadec_lite")
+print (Lite) -- function: 0x... -- Setup function
+print (Lite()) -- SECRET MESSAGE -- No arguments
+print (Lite(255)) -- table: 0x... (Lite Hexadec Module) -- With cache size
+print (Lite(255, 255, true)) -- table: 0x... (Hexadec Module) -- With cache size | Ultra Cache size | Manutention Mode
+```
 </details>
 </details>
 </details>
