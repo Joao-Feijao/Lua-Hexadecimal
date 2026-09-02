@@ -719,7 +719,7 @@ Args:<br>
 *- Sep*: Separates the hexadecimal digits for table.concat on the hexadec type return.
 
 Tips:<br>
-*- Every UTF8 character on str will be considered, even blank spaces*;<br>
+*- Every UTF-8 character on str will be considered, even blank spaces and null (ASCII 0)*;<br>
 *- If the min is nil or min == 0 and sep == "", then it will activate a more efficient string pattern*.
 
 Example:<br>
@@ -1052,7 +1052,8 @@ Args:<br>
 *- Str*: Can only be a string.
 
 Tips:<br>
-*- This function is way faster than Hexadec.SCode, but return a normal table instead of a hexadec type*.
+*- This function is way faster than Hexadec.SCode, but return a normal table instead of a hexadec type*;<br>
+*- Every UTF-8 character on str will be considered, even blank spaces and null (ASCII 0)*.
 
 Example:<br>
 ```lua
@@ -1061,22 +1062,23 @@ local hexa = Lite.Code("123")
 print(hexa) -- table: 0x...
 print (hexa[1]) -- 31
 ```
-**FUNCTION: Setup(...):**<br>
-Description: The setup function mentioned in the Starting section.<br>
-OBS: Only available on Lua 5.5!
+**FUNCTION: Lite.Decode(tab: table):**<br>
+Description: Lite counterpart to Hexadec.NDecode, inspired by decode, from "hex" (by <b>mah0x211</b>).
 
 Return:<br>
-*- Hexadec Module or SECRET MESSAGE*.
+*- String*.
 
 Args:<br>
-*- 1st argument (or cache size)*: Number that defines your Hexadec.HEX size.
+*- Tab*: Table with string values.
+
+Tips:<br>
+*- The string values are interpreted as ASCII, so the max is 255*.
 
 Example:<br>
 ```lua
-local Lite = require("hexadec_lite")
-print (Lite) -- function: 0x... -- Setup function
-print (Lite()) -- SECRET MESSAGE -- No arguments
-print (Lite(255)) -- table: 0x... (Hexadec Module) -- With cache size
+local Lite = require("hexadec_lite")(255)
+local hexa = Lite.Decode({"31", "32", "33"})
+print(hexa) -- 123
 ```
 </details>
 <details>
