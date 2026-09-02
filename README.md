@@ -657,6 +657,8 @@ Tonumber                : 0.004 secs    nil     15
 
 <details>
 <summary>🔤 <b>Documentation</b></summary>
+Here you can see how to use the functions inside of Hexadec!
+Select the version you want to browse:
 
 <details>
 <summary><b>Normal version</b></summary>
