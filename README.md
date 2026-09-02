@@ -1290,4 +1290,8 @@ Changes:
 </details>
 </details>
 
-More coming soon... (FAQ for discussion questions, Extras or Mechanics (like cache)? And a better documentation organization, because y'all deserve it :D)
+<details>
+<summary>📄 <b>Extras</b></summary>
+## Here you can see... under construction...
+</details>
+More coming soon... (FAQ for discussion questions or Mechanics (like cache)? Also, a better documentation organization, because y'all deserve it :D)
