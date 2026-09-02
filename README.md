@@ -27,7 +27,8 @@ print(hexadec.NCode(10, nil, nil, "255")) -- {FF}
 
 <details>
 <summary>⚡ <b>Benchmarks</b></summary>
-Here you can see Hexadec compared to other LuaRocks modules!
+
+## Here you can see Hexadec compared to other LuaRocks modules!
 Specs:<br>
 - R7 5700G;<br>
 - 16GB DDR4;<br>
@@ -657,12 +658,17 @@ Tonumber                : 0.004 secs    nil     15
 
 <details>
 <summary>🔤 <b>Documentation</b></summary>
-Here you can see how to use the functions inside of Hexadec!
+
+## Here you can see how to use the functions inside of Hexadec!<br>
 Select the version you want to browse:
 
 <details>
 <summary><b>Normal version</b></summary>
 
+Normal version can be represented with:
+```lua
+require("hexadec")
+```
 <details>
 
 <summary><b>v1.0.0-1</b></summary>
@@ -990,7 +996,7 @@ Tips:<br>
 Example:<br>
 ```lua
 local Hexadec = require("hexadec")(255)
-local hexa = Hexadec.SDecode("1", false, false)
+local hexa = Hexadec.SDecode("1", true)
 print(hexa) -- A
 ```
 </details>
@@ -1025,6 +1031,11 @@ print(hexa) -- A
 </details>
 <details>
 <summary><b>Lite version</b></summary>
+
+Lite version can be represented with:
+```lua
+require("hexadec_lite")
+```
 <details>
 <summary><b>v1.1.0-1</b></summary>
 
@@ -1204,6 +1215,10 @@ end
 
 <details>
 <summary>📜 <b>Change log</b></summary>
+
+## Here you can see the changes that every update made!
+The functions documentation is linked to the Change Log, so you only see the functions that were changed in this section on the newer versions.
+Changes:
 
 <details>
 <summary>⌚ <b>v1.2.1-1</b> - Patch <b>(NEWER RELEASE)</b></summary>
