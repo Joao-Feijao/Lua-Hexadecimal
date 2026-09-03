@@ -1170,7 +1170,7 @@ print(hexa) -- 123
 ```
 </details>
 <details>
-<summary><b>v1.2.0-1 (UNDER CONSTRUCTION...)</b></summary>
+<summary><b>v1.2.0-1</b></summary>
 
 **FUNCTION: Setup(...):**<br>
 Description: The setup function mentioned in the Starting section.<br>
@@ -1372,6 +1372,29 @@ Changes:
 ## Here you can see other features and extras!
 
 <details>
+<summary><b>Hexadec.Metatable</b></summary>
+
+Description: **Hexadec.Metatable is the default hexadec type metatable** available in Normal version.
+
+Features:<br>
+____type = "hexadec";
+__index = Hexadec module;
+__tostring = returns "{table_content_here}"
+__concat = returns a tostring(table)..tostring(other)
+__eq = returns tostring(table) == tostring(other)
+
+Tips:<br>
+*- You can change this table to make new hexadec types do other things!*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(255)
+print (Hexadec.Metatable) -- table: 0x...
+print (getmetatable(Hexadec.NCode(16, nil, nil, "1")) == Hexadec.Metatable) -- true
+```
+</details>
+
+<details>
 <summary><b>Hexadec.HEX</b></summary>
 
 Description: **Hexadec.HEX is a cache** made with hexadecimal numbers for faster conversion.
@@ -1389,6 +1412,24 @@ print (#Hexadec.HEX == size) -- true
 ```
 </details>
 
+<details>
+<summary><b>Lite.UCH</b></summary>
+
+Description: **Hexadec.UCH is the Ultra Cache** that came in v1.2.0-1 for Lite version.<br>
+OBS: Only activated if Setup have a 2nd argument (Ultra Cache size).
+
+Features:<br>
+____newindex (from its metatable): Uses single randomized LRU cache, Lite.Alert and Lite.Rigid.
+
+Tips:<br>
+*- This cache can make the code fly with velocity, being faster than Hex (Lua module made in C)*.
+
+Example:<br>
+```lua
+local Hexadec = require("hexadec")(size)
+print (#Hexadec.HEX == size) -- true
+```
+</details>
 -------------------------------------------------------------------------------------------------------- EXTRAS END
 </details>
 More coming soon... (FAQ for discussion questions or Mechanics (like cache)? Also, a better documentation organization, because y'all deserve it :D)
