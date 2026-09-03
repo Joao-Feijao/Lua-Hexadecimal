@@ -1295,10 +1295,22 @@ Changes:
 
 ## Here you can see other features and extras!
 
-Uhhh... under copnstruction 2.0
 <details>
-<summary>📄 <b>Extras</b></summary>
+<summary><b>Hexadec.HEX</b></summary>
 
+Description: **Hexadec.HEX is a cache** made with hexadecimal numbers for faster conversion.
+
+Size: Table (string indexes) with Setup 1st argument size.
+
+Tips:<br>
+*- This cache can have external uses, so feel free!*.
+
+Example:<br>
+```lua
+local size = 255
+local Hexadec = require("hexadec")(size)
+print (#Hexadec.HEX == size) -- true
+```
 </details>
 </details>
 More coming soon... (FAQ for discussion questions or Mechanics (like cache)? Also, a better documentation organization, because y'all deserve it :D)
