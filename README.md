@@ -35,7 +35,7 @@ local hexsetlite = require("hexadec_lite")
 
 print(type(hexsetlite)) -- function
 hexsetlite() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
-hexsetlit = hexsetlit(your_cache_size_here)
+hexsetlite = hexsetlite(your_cache_size_here)
 hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
 ```
 
@@ -59,24 +59,26 @@ local hexset = require("hexadec55")
 local hexsetlite = require("hexadec_lite55")
 
 -- General, available on v1.2.0<
-local hexset = require("hexadec")
-local hexsetlite = require("hexadec_lite")
+local hexset = require("hexadec") -- DOESN'T HAVE SETUP FUNCTION!!!
+local hexsetlite = require("hexadec_lite") -- DOESN'T HAVE SETUP FUNCTION!!!
 
 -- Normal version
-print(type(hexsetlite)) -- function
-hexsetlite() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
-hexsetlit = hexsetlit(your_cache_size_here)
-hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
-
--- Lite version
 print(type(hexset)) -- function
 hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
 hexset = hexset(your_cache_size_here)
 hexset(your_cache_size_here) -- table (Hexadec module)
+
+-- Lite version
+print(type(hexsetlite)) -- function
+hexsetlite() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
+hexsetlite = hexsetlite(your_cache_size_here)
+hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
 ```
 
 ## Last thing to do...
-Now you can use 
+Now you can use the module! Also, thank you for downloading.
+
+You can see more of how to use the functions, setup and others in the [Documentation](#Documentation) and [Extras](#Here-you-can-see other-features-and-extras) sections below!
 </details>
 
 <details>
