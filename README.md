@@ -1,8 +1,20 @@
 # Introduction for Lua Hexadecimal
-Hi, I made a module in Lua that can manipulate hexadecimal!
-It can convert numbers of a n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
-back or become RGB (RGBA) colors, hexdumped and be cleaned, with a secure mode for the decode function.
-Also, I recommend using 'Color' and 'Hex' with it!
+**Hi, I made a module in Lua that can manipulate hexadecimal!**
+
+LuaRocks description:<br>
+Can convert numbers of n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
+back or become RGB (RGBA) colors, hex dumped and be cleaned, with a secure mode for the decode function.
+Functions:
+NCode - Codes numeric strings to a hexadec type;
+SCode - Codes strings to a hexadec type;
+NDecode - Decodes a hexadec type to numbers;
+SDecode - Decodes a hexadec type to strings;
+IsHex - Validates a hexadec type or a string;
+Clean - Cleans a hexadec type or a string or a number excluding non-hexadecimal caracteres;
+Dump - Hex dump from a hexadec type;
+Color - Uses a table or a string to create RGB or RGBA (with Alpha).
+
+Also, I recommend using [Color](https://github.com/andOrlando/color) and [Hex](https://github.com/mah0x211/lua-hex) with it!
 
 <details open>
 <summary>🔍 <b>Starting</b></summary>
@@ -182,7 +194,7 @@ Estressed - ISHEX       : 0.009 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.003 secs    123     7B
 
 Estressed - CLEAN       : 0.013 secs    {01, 02, 03, 04}        01020304        0
--- Hexdump
+-- Hex dump
 
 DUMP                    : 0.000 secs    {01, 02, 03, 04}
 
@@ -290,7 +302,7 @@ Estressed - ISHEX       : 0.023 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.009 secs    123     7B
 
 Estressed - CLEAN       : 0.028 secs    {01, 02, 03, 04}        01020304        0
--- Hexdump
+-- Hex dump
 
 DUMP                    : 0.001 secs    {01, 02, 03, 04}
 
@@ -348,7 +360,7 @@ NDECODE : 0.004 secs 161 161
 SDECODE : 0.007 secs A1 161
 ISHEX : 0.021 secs 123 true
 CLEAN : 0.014 secs 123 7B
--- Hexdump
+-- Hex dump
 DUMP : 0.001 secs C8
 COLOR : 0.032 secs #FFFFFFFF 1.0 1.0 1.0 1.0
 Hex: Encode : 0.003 secs 121 abc 31323120616263
@@ -383,7 +395,7 @@ NDECODE                  : 0.005 secs   161     161
 SDECODE                  : 0.006 secs   A1      161
 ISHEX                    : 0.020 secs   123     true
 CLEAN                    : 0.015 secs   123     7B
--- Hexdump
+-- Hex dump
 DUMP                     : 0.001 secs   {C8}
 COLOR                    : 0.033 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
 Lite: CODE               : 0.043 secs   121 abc table: 000000000072e150
@@ -469,7 +481,7 @@ Estressed - ISHEX       : 0.020 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.008 secs    123     7B
 
 Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
--- Hexdump
+-- Hex dump
 
 DUMP                    : 0.001 secs    {01, 02, 03, 04}
 
@@ -527,7 +539,7 @@ NDECODE                  : 0.004 secs   161     161
 SDECODE                  : 0.006 secs   A1      161
 ISHEX                    : 0.004 secs   123     true
 CLEAN                    : 0.011 secs   123     7B
--- Hexdump
+-- Hex dump
 DUMP                     : 0.001 secs   {C8}
 COLOR                    : 0.025 secs   #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
 Lite: CODE               : 0.025 secs   121 abc table: 0000000000eb65c0
@@ -611,7 +623,7 @@ Estressed - ISHEX       : 0.021 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.010 secs    123     7B
 
 Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
--- Hexdump
+-- Hex dump
 
 DUMP                    : 0.001 secs    {01, 02, 03, 04}
 
@@ -894,18 +906,18 @@ local hexa = Hexadec.Clean("F F", false)
 print(hexa) -- FF
 ```
 **FUNCTION (METHOD): Hexadec.Dump(self: hexadec type, mode: string, inter: table | number, line: number):**<br>
-Description: A function that generates a hexdump in the terminal.
+Description: A function that generates a hex dump in the terminal.
 
 Return: *nil*.
 
 Args:<br>
 *- Self*: Must be a hexadec type;<br>
-*- Mode*: Defines the hexdump mode:<br>
-*> "C" or "-C" don't require inter because hexdumps everything*;<br>
+*- Mode*: Defines the hex dump mode:<br>
+*> "C" or "-C" don't require inter because hex dumps everything*;<br>
 *> "n" or "-n" require inter -> table ({start, end})*;<br>
 *> "s" or "-s" require inter -> number (ignore from start)*;<br>
-*- Inter*: Defines the interval of the hexdump;<br>
-*- Line:* Defines the max characteres output for every line in the hexdump (default is 16).
+*- Inter*: Defines the interval of the hex dump;<br>
+*- Line:* Defines the max characteres output for every line in the hex dump (default is 16).
 
 Tips:<br>
 *- Start and end in inter should be numbers*;<br>
