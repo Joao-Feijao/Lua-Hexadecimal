@@ -1372,16 +1372,22 @@ Changes:
 ## Here you can see other features and extras!
 
 <details>
+<summary><b>Hexadec.BitMetatable</b></summary>
+
+Description: **Hexadec.BitMetatable currently doesn't have a use, but will in the future...**
+</details>
+
+<details>
 <summary><b>Hexadec.Metatable</b></summary>
 
 Description: **Hexadec.Metatable is the default hexadec type metatable** available in Normal version.
 
 Features:<br>
-____type = "hexadec";
-__index = Hexadec module;
-__tostring = returns "{table_content_here}"
-__concat = returns a tostring(table)..tostring(other)
-__eq = returns tostring(table) == tostring(other)
+__type = "hexadec";<br>
+__index = Hexadec module;<br>
+__tostring = returns "{table_content_here}";<br>
+__concat = returns a tostring(table)..tostring(other);<br>
+__eq = returns tostring(table) == tostring(other).
 
 Tips:<br>
 *- You can change this table to make new hexadec types do other things!*.
@@ -1415,19 +1421,21 @@ print (#Hexadec.HEX == size) -- true
 <details>
 <summary><b>Lite.UCH</b></summary>
 
-Description: **Hexadec.UCH is the Ultra Cache** that came in v1.2.0-1 for Lite version.<br>
+Description: **Lite.UCH is the Ultra Cache** that came in v1.2.0-1 for Lite version.<br>
 OBS: Only activated if Setup have a 2nd argument (Ultra Cache size).
 
 Features:<br>
-____newindex (from its metatable): Uses single randomized LRU cache, Lite.Alert and Lite.Rigid.
+__newindex (from its metatable): Uses single randomized LRU cache, Lite.Alert and Lite.Rigid;<br>
+If Lua version == 5.3 or 5.4: The array indexes are valued up to the size, even though the cache uses the hash part.
 
 Tips:<br>
 *- This cache can make the code fly with velocity, being faster than Hex (Lua module made in C)*.
 
 Example:<br>
 ```lua
-local Hexadec = require("hexadec")(size)
-print (#Hexadec.HEX == size) -- true
+local size = 255
+local Lite = require("hexadec_lite")(255, size)
+print (#Lite.UCH == size) -- Can be false (Lua 5.5 and LuaJIT) or true (Lua 5.3 and Lua 5.4) because of the architecture
 ```
 </details>
 -------------------------------------------------------------------------------------------------------- EXTRAS END
