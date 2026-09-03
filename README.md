@@ -6,23 +6,77 @@ Also, I recommend using 'Color' and 'Hex' with it!
 
 <details open>
 <summary>🔍 <b>Starting</b></summary>
-You can download via LuaRocks through the [repository website](https://luarocks.org/modules/joao-feijao/hexadec) or you can use the following prompt if you have LuaRocks installed:
-  
+
+## How can I download the module?
+You can download the module via:
+- *tags and releases*;
+- *LuaRocks, with the [repository website](https://luarocks.org/modules/joao-feijao/hexadec)*;
+- *If you have LuaRocks installed, you can use the following prompt:*
 ```bash
 $ luarocks install hexadec
 ```
 
-Now, the next step is loading the package:
+## Downloaded it via LuaRocks? Let's proceed!
+Now, the next step is loading the package (currently, every version supports this):
+
+- Normal version:
 ```lua
-local hexset = require("hexadec")(255) -- Normal version
-local hexsetlite = require("hexadec_lite")(255) -- Lite version, available on v1.1.0+
+local hexset = require("hexadec")
 
-print(type(hexset), type(hexsetlite)) -- function function -- They both return a setup function
+print (type(hexset)) -- function
 hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
-local hexadec = hexset(10) -- Will return the Hexadec module
-
-print(hexadec.NCode(10, nil, nil, "255")) -- {FF}
+hexset = hexset(your_cache_size_here)
+print (type(hexset)) -- table (Hexadec module)
 ```
+
+- Lite version (available on v1.1.0=+):
+```lua
+local hexsetlite = require("hexadec_lite")
+
+print(type(hexsetlite)) -- function
+hexsetlite() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
+hexsetlit = hexsetlit(your_cache_size_here)
+hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
+```
+
+## Downloaded it via tags or releases? Let's proceed!
+Instead of requiring a universal file, you will have the manual method:
+```lua
+-- For LuaJIT, available on v1.2.0=+
+local hexset = require("hexadecJIT")
+local hexsetlite = require("hexadec_liteJIT")
+
+-- For Lua 5.3, available on v1.2.0=+
+local hexset = require("hexadec53")
+local hexsetlite = require("hexadec_lite53")
+
+-- For Lua 5.4, available on v1.2.0=+
+local hexset = require("hexadec54")
+local hexsetlite = require("hexadec_lite54")
+
+-- For Lua 5.5, available on v1.1.0=+
+local hexset = require("hexadec55")
+local hexsetlite = require("hexadec_lite55")
+
+-- General, available on v1.2.0<
+local hexset = require("hexadec")
+local hexsetlite = require("hexadec_lite")
+
+-- Normal version
+print(type(hexsetlite)) -- function
+hexsetlite() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
+hexsetlit = hexsetlit(your_cache_size_here)
+hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
+
+-- Lite version
+print(type(hexset)) -- function
+hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
+hexset = hexset(your_cache_size_here)
+hexset(your_cache_size_here) -- table (Hexadec module)
+```
+
+## Last thing to do...
+Now you can use 
 </details>
 
 <details>
