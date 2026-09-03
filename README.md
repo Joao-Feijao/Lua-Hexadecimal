@@ -1292,6 +1292,13 @@ Changes:
 
 <details>
 <summary>📄 <b>Extras</b></summary>
-## Here you can see... under construction...
+
+## Here you can see other features and extras!
+
+Uhhh... under copnstruction 2.0
+<details>
+<summary>📄 <b>Extras</b></summary>
+
+</details>
 </details>
 More coming soon... (FAQ for discussion questions or Mechanics (like cache)? Also, a better documentation organization, because y'all deserve it :D)
