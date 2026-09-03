@@ -78,7 +78,7 @@ hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
 ## Last thing to do...
 Now you can use the module! Also, thank you for downloading.
 
-You can see more of how to use the functions, setup and others in the [Documentation](#Documentation) and [Extras](#Here-you-can-see other-features-and-extras) sections below!
+You can see more of how to use the functions, setup and others in the [Documentation](#here-you-can-see-how-to-use-the-functions-inside-of-hexadec) and [Extras](#ere-you-can-see other-features-and-extras) sections below!
 </details>
 
 <details>
