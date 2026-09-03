@@ -3,15 +3,15 @@
 
 LuaRocks description:<br>
 Can convert numbers of n-base (up to 36) and strings to hexadec (special type representing hexadecimal in a table) that can be converted
-back or become RGB (RGBA) colors, hex dumped and be cleaned, with a secure mode for the decode function.
-Functions:
-NCode - Codes numeric strings to a hexadec type;
-SCode - Codes strings to a hexadec type;
-NDecode - Decodes a hexadec type to numbers;
-SDecode - Decodes a hexadec type to strings;
-IsHex - Validates a hexadec type or a string;
-Clean - Cleans a hexadec type or a string or a number excluding non-hexadecimal caracteres;
-Dump - Hex dump from a hexadec type;
+back or become RGB (RGBA) colors, hex dumped and be cleaned, with a secure mode for the decode function.<br>
+Functions:<br>
+NCode - Codes numeric strings to a hexadec type;<br>
+SCode - Codes strings to a hexadec type;<br>
+NDecode - Decodes a hexadec type to numbers;<br>
+SDecode - Decodes a hexadec type to strings;<br>
+IsHex - Validates a hexadec type or a string;<br>
+Clean - Cleans a hexadec type or a string or a number excluding non-hexadecimal caracteres;<br>
+Dump - Hex dump from a hexadec type;<br>
 Color - Uses a table or a string to create RGB or RGBA (with Alpha).
 
 Also, I recommend using [Color](https://github.com/andOrlando/color) and [Hex](https://github.com/mah0x211/lua-hex) with it!
