@@ -1448,7 +1448,10 @@ print (#Lite.UCH == size) -- Can be false (Lua 5.5 and LuaJIT) or true (Lua 5.3 
 - [x] - You saw this;
 - [x] - SUPREME otimization;
 - [x] - Y'all deserve it :D;
-- [x] - 1.3.0-1 coming soon...
+- [x] - 1.3.0-1 coming soon;
+- [ ] - Better packages and repository organization;
+- [ ] - Wiki;
+- [ ] - 100 downloads at LuaRocks;
 - [x] - Clearly, this is UNDER CONSTRUCTION 🤑🤑🤑...
 </details>
 
