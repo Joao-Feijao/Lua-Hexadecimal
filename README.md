@@ -78,7 +78,9 @@ hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
 ## Last thing to do...
 Now you can use the module! Also, thank you for downloading.
 
-You can see more of how to use the functions, setup and others in the [Documentation](#here-you-can-see-how-to-use-the-functions-inside-of-hexadec) and [Extras](#ere-you-can-see other-features-and-extras) sections below!
+You can see more of how to use the functions, setup and others in the [Documentation](#here-you-can-see-how-to-use-the-functions-inside-of-hexadec) and [Extras](#here-you-can-see-other-features-and-extras) sections below!
+
+-------------------------------------------------------------------------------------------------------- STARTING END
 </details>
 
 <details>
@@ -710,6 +712,8 @@ Tonumber                : 0.004 secs    nil     15
 2nd - Lua 5.5;<br>
 3rd - Lua 5.4;<br>
 4th - Lua 5.3.
+
+-------------------------------------------------------------------------------------------------------- BENCHMARK END
 </details>
 
 <details>
@@ -1267,6 +1271,8 @@ end
 ```
 </details>
 </details>
+
+-------------------------------------------------------------------------------------------------------- DOCUMENTATION END
 </details>
 
 <details>
@@ -1344,6 +1350,8 @@ Changes:
 *-> Hexadec.Dump;<br>*
 *-> Hexadec.Color.*
 </details>
+
+-------------------------------------------------------------------------------------------------------- CHANGE LOG END
 </details>
 
 <details>
@@ -1368,5 +1376,7 @@ local Hexadec = require("hexadec")(size)
 print (#Hexadec.HEX == size) -- true
 ```
 </details>
+
+-------------------------------------------------------------------------------------------------------- EXTRAS END
 </details>
 More coming soon... (FAQ for discussion questions or Mechanics (like cache)? Also, a better documentation organization, because y'all deserve it :D)
