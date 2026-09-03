@@ -1369,7 +1369,7 @@ Changes:
 <details>
 <summary>📄 <b>Extras</b></summary>
 
-## Here you can see other features and extras!
+## Here you can see other features and extras mechanics!
 
 <details>
 <summary><b>Hexadec.BitMetatable</b></summary>
@@ -1440,4 +1440,15 @@ print (#Lite.UCH == size) -- Can be false (Lua 5.5 and LuaJIT) or true (Lua 5.3 
 </details>
 -------------------------------------------------------------------------------------------------------- EXTRAS END
 </details>
-More coming soon... (FAQ for discussion questions or Mechanics (like cache)? Also, a better documentation organization, because y'all deserve it :D)
+
+<details>
+<summary>😉 <b>To under construction</b></summary>
+
+## Here you can see other future features and objectives!
+- [x] - You saw this;
+- [x] - SUPREME otimization;
+- [x] - Y'all deserve it :D;
+- [x] - Clearly, this is UNDER CONSTRUCTION 🤑🤑🤑...;
+</details>
+
+More coming soon... (FAQ for discussion questions?)
