@@ -23,7 +23,7 @@ Also, I recommend using [Color](https://github.com/andOrlando/color) and [Hex](h
 You can download the module via:
 - *tags and releases*;
 - *LuaRocks, with the [repository website](https://luarocks.org/modules/joao-feijao/hexadec)*;
-- *If you have LuaRocks installed, you can use the following prompt:*
+- *If you already have LuaRocks installed, you can use the following prompt:*
 ```bash
 $ luarocks install hexadec
 ```
@@ -38,7 +38,7 @@ local hexset = require("hexadec")
 print (type(hexset)) -- function
 hexset() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
 hexset = hexset(your_cache_size_here)
-print (type(hexset)) -- table (Hexadec module)
+print (type(hexset)) -- table (it's your Hexadec module!)
 ```
 
 - Lite version (available on v1.1.0=+):
@@ -48,7 +48,7 @@ local hexsetlite = require("hexadec_lite")
 print(type(hexsetlite)) -- function
 hexsetlite() -- Will print a tutorial and return a secret message because it doesn't have an argument or the argument isn't a number
 hexsetlite = hexsetlite(your_cache_size_here)
-hexsetlite(your_cache_size_here) -- table (Hexadec lite module)
+hexsetlite(your_cache_size_here) -- table (it's your Hexadec lite module!)
 ```
 
 ## Downloaded it via tags or releases? Let's proceed!
@@ -71,8 +71,8 @@ local hexset = require("hexadec55")
 local hexsetlite = require("hexadec_lite55")
 
 -- General, available on v1.2.0<
-local hexset = require("hexadec") -- DOESN'T HAVE SETUP FUNCTION!!!
-local hexsetlite = require("hexadec_lite") -- DOESN'T HAVE SETUP FUNCTION!!!
+local hexset = require("hexadec") -- Doesn't have the Setup function; in other words, hexset is the Hexadec module!!!
+local hexsetlite = require("hexadec_lite") -- Doesn't have the Setup function; in other words, hexsetlite is the Hexadec lite module!!!
 
 -- Normal version
 print(type(hexset)) -- function
@@ -201,6 +201,7 @@ DUMP                    : 0.000 secs    {01, 02, 03, 04}
 COLOR                   : 0.011 secs    #FFFFFFFF       0       0.99609375      0.99609375      0.99609375
 
 Estressed - COLOR       : 0.014 secs    {01, 02, 03, 04}        #01020304
+
 --- Lite ---
 
 Lite.Code               : 0.001 secs    121 abc 31323120616263
@@ -309,6 +310,7 @@ DUMP                    : 0.001 secs    {01, 02, 03, 04}
 COLOR                   : 0.034 secs    #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
 
 Estressed - COLOR       : 0.058 secs    {01, 02, 03, 04}        #01020304
+
 --- Lite ---
 
 Lite.Code               : 0.002 secs    121 abc 31323120616263
@@ -349,12 +351,12 @@ Set("SDECODE", hexadec.SDecode, 50000, "A1", "A1")
 Set("ISHEX", hexadec.IsHex, 50000, 123, false)
 Set("CLEAN", hexadec.Clean, 50000, 123, false, true)
 Set("DUMP", hexadec.Dump, 5, hexadec.NCode(10, nil, nil, "200"), "C")
-Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)
+Set("COLOR", hexadec.Color, 50000, "#FFFFFFFF", true, true)]
 Set("Hex: Encode", hex.encode, 50000, "121 abc", true, true)
 Set("Hex: Decode", hex.decode, 50000, "31323120616263", true, true)
 
 -- OUTPUT (50.000 repeats, except for Hexadec.Dump, which is 5)
-NCODE : 0.058 secs 6 017 | 001 | 
+NCODE : 0.058 secs 6 017 | 001 |
 SCODE : 0.096 secs 121 abc 31 32 31 20 61 62 63 
 NDECODE : 0.004 secs 161 161
 SDECODE : 0.007 secs A1 161
@@ -363,6 +365,8 @@ CLEAN : 0.014 secs 123 7B
 -- Hex dump
 DUMP : 0.001 secs C8
 COLOR : 0.032 secs #FFFFFFFF 1.0 1.0 1.0 1.0
+
+-- Hex Module - by mah0x211
 Hex: Encode : 0.003 secs 121 abc 31323120616263
 Hex: Decode : 0.003 secs 31323120616263 121 abc
 ```
@@ -398,8 +402,12 @@ CLEAN                    : 0.015 secs   123     7B
 -- Hex dump
 DUMP                     : 0.001 secs   {C8}
 COLOR                    : 0.033 secs   #FFFFFFFF       1.0     1.0     1.0     1.0
+
+-- Hexadec lite module
 Lite: CODE               : 0.043 secs   121 abc table: 000000000072e150
 Lite: DECODE             : 0.021 secs   table: 000000000072e1d0 A
+
+-- Hex Module - by mah0x211
 Hex: Encode              : 0.003 secs   121 abc 31323120616263
 Hex: Decode              : 0.003 secs   31323120616263  121 abc
 ```
@@ -481,6 +489,7 @@ Estressed - ISHEX       : 0.020 secs    {01, 02, 03, 04}        true
 CLEAN                   : 0.008 secs    123     7B
 
 Estressed - CLEAN       : 0.026 secs    {01, 02, 03, 04}        01020304        0
+
 -- Hex dump
 
 DUMP                    : 0.001 secs    {01, 02, 03, 04}
@@ -542,6 +551,8 @@ CLEAN                    : 0.011 secs   123     7B
 -- Hex dump
 DUMP                     : 0.001 secs   {C8}
 COLOR                    : 0.025 secs   #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
+
+-- Hexadec lite module
 Lite: CODE               : 0.025 secs   121 abc table: 0000000000eb65c0
 Lite: DECODE             : 0.020 secs   table: 0000000000eb5e40 A
 ```
@@ -630,6 +641,7 @@ DUMP                    : 0.001 secs    {01, 02, 03, 04}
 COLOR                   : 0.026 secs    #FFFFFFFF       0.0     0.99609375      0.99609375      0.99609375
 
 Estressed - COLOR       : 0.038 secs    {01, 02, 03, 04}        #01020304
+
 --- Lite ---
 
 Lite.Code               : 0.001 secs    121 abc 31323120616263
