@@ -739,7 +739,7 @@ Select the version you want to browse:
 
 Normal version can be represented with:
 ```lua
-require("hexadec")
+local Hexadec = require("hexadec")
 ```
 <details>
 
@@ -1106,7 +1106,7 @@ print(hexa) -- A
 
 Lite version can be represented with:
 ```lua
-require("hexadec_lite")
+local Lite = require("hexadec_lite")
 ```
 <details>
 <summary><b>v1.1.0-1</b></summary>
